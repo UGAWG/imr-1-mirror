@@ -719,7 +719,7 @@
  }
  \global\let\bibfont=\footnotesize
  \global\bibsep=0pt
- \if@twocolumn\input{fleqn.clo}\fi
+ \if@twocolumn\input{fleqn.sty}\fi
 \else\ifnum\jtype=5
  \RequirePackage{geometry}
  \geometry{twoside,
@@ -736,7 +736,7 @@
  }%
  \global\let\bibfont=\footnotesize
  \global\bibsep=0pt
- \input{fleqn.clo}
+ \input{fleqn.sty}
  \global\@twocolumntrue
 %%
 %% End of option '5p'
