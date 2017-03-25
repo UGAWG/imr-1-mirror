@@ -41,6 +41,7 @@
 \usepackage{ecrc}
 \usepackage{amsmath}
 
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 %% The ecrc package defines commands needed for running heads and logos.
 %% For running heads, you can set the journal name, the volume, the starting page and the authors
@@ -264,13 +265,51 @@ the currently participating codes using the linearly varying
 metric on the unit cube.
 For this publication, we focus on two measures of metric
 satisfaction.
-First, the classic edge-length criterion as presented in
+First, we measure the edge-length criterion as presented in
 (CITE THE LAST COMPARISON PAPER).
-Second, we also present element quality results, using the
-mean ratio formula for tetrahedra.
+Our formula for edge length is based on an assumption
+that the desired length varies linearly along the
+edge (CITE LOSEILLE'S PAPER), and is defined
+by Equations \ref{eq:length} and \ref{eq:endpoint_lengths}.
 
 \begin{equation}
-Q_K = \frac{\left(\frac{|K|\det(M)^{\frac12}}{|\hat{K}|}\right)^{\frac{2}{3}}}{\frac16\sum_{e\in K}{v_e^T M v_e}}
+\label{eq:length}
+L_e = \begin{cases}
+\frac{L_a - L_b}{\log(L_a / L_b)} & |L_a - L_b| > 0.001 \\
+\frac{L_a + L_b}{2} & \text{else} \\
+\end{cases}
+\end{equation}
+
+\begin{equation}
+\label{eq:endpoint_lengths}
+L_a = (v_e^T M_a v_e)^{\frac12},
+L_b = (v_e^T M_b v_e)^{\frac12}
+\end{equation}
+
+Second, we also present element quality results, using the
+mean ratio formula for tetrahedra (Equation \ref{eq:quality})
+where $K$ is a tetrahedron, $|K|$ is its volume,
+$v_e$ is the vector along one of its 6 edges $e$,
+and $|\hat{K}|$ is the volume of a tetrahedron
+with unit edge lengths.
+$M_{\text{max}}$ is a single metric tensor
+being used to measure the whole tetrahedron.
+In this case we choose $M_{\text{max}}$ as the
+adjacent vertex metric with largest determinant,
+see Equation \ref{eq:max_metric}.
+
+\begin{equation}
+\label{eq:quality}
+Q_K =
+ \frac{\left(\frac{|K|\det(M_{\text{max}})^{\frac12}}
+                  {|\hat{K}|}
+       \right)^{\frac{2}{3}}}
+      {\frac16\sum_{e\in K}{v_e^T M_{\text{max}} v_e}}
+\end{equation}
+
+\begin{equation}
+\label{eq:max_metric}
+M_{\text{max}} = \argmax_{M_v, v\in K}{\det{M_v}}
 \end{equation}
 
 %\enlargethispage{12pt}
