@@ -39,7 +39,7 @@
 
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
-%\usepackage{amsmath}
+\usepackage{amsmath}
 
 
 %% The ecrc package defines commands needed for running heads and logos.
@@ -164,10 +164,16 @@
 
 
 \author[a]{Mike Park\corref{cor1}}
-\author[b]{Daniel Ibanez}
+\author[b]{Nico Barral}
+\author[b]{Adrien Loseille}
+\author[c]{Daniel Ibanez}
+\author[d]{Joshua Krakos}
+\author[d]{Todd Michal}
 
 \address[a]{NASA}
-\address[b]{Sandia National Laboratories, P.O. Box 5800, Albuquerque, NM 87185-1321, United States}
+\address[b]{INRIA}
+\address[c]{Sandia National Laboratories, P.O. Box 5800, Albuquerque, NM 87185-1321, United States}
+\address[d]{Boeing}
 
 \begin{abstract}
 %% Text of abstract
@@ -225,7 +231,7 @@ rigorous examination of anisotropic grid adaptation methods
 that can guide the implementation and
 further development of solution adaptive methods.
 
-\section{Website (Benchmarks)}
+\section{Benchmarks Site}
 {\color{red} Josh}
 
 Website layout, case descriptions, evaluation framework.
@@ -236,11 +242,36 @@ Motivations for choosing certain metrics.
 
 \subsection{Omega\_h}
 
+Omega\_h is an open-source grid adaptation library, written in C++11.
+Like the other codes in this study, it aims to be a state-of-the-art
+implementation of grid adaptation by local topological modifications.
+Omega\_h has certain unique objectives.
+First, it targets tightly coupled adaptivity within a simulation,
+which requires remapping the solution accurately.
+This motivates minimizing the number of modifications.
+Second, it targets simulations outside the CFD space, including
+solid mechanics and shock hydrodynamics.
+This motivates a much stronger focus on element quality
+and efficient operation with isotropic metrics.
+Third, it targets high performance execution using threading
+and even GPUs.
+
 \section{Results}
 {\color{red} Dan}
 
-List of existing codes and their results on the given benchmarks,
-analysis of results and experiences.
+We first present the results from all
+the currently participating codes using the linearly varying
+metric on the unit cube.
+For this publication, we focus on two measures of metric
+satisfaction.
+First, the classic edge-length criterion as presented in
+(CITE THE LAST COMPARISON PAPER).
+Second, we also present element quality results, using the
+mean ratio formula for tetrahedra.
+
+\begin{equation}
+Q_K = \frac{\left(\frac{|K|\det(M)^{\frac12}}{|\hat{K}|}\right)^{\frac{2}{3}}}{\frac16\sum_{e\in K}{v_e^T M v_e}}
+\end{equation}
 
 %\enlargethispage{12pt}
 
