@@ -36,6 +36,7 @@
 \flushbottom
 
 \usepackage{color}
+\usepackage{subcaption}
 
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
@@ -343,6 +344,46 @@ refine/one  &  0.06 &        0.03 &        1.80 \\
 refine/two  & 0.003 &        0.05 &        1.50 \\
 \end{tabular}
 \end{table}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-linear-stats.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-linear-stats.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-linear-stats.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fefloa-cube-linear-stats.pdf}
+\caption{feflo.a}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-linear-stats.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-one-cube-linear-stats.pdf}
+\caption{refine/one}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-two-cube-linear-stats.pdf}
+\caption{refine/two}
+\end{subfigure}
+\caption{Length histograms for the linear cube metric}
+\label{fig:cube-linear-histograms}
+\end{figure}
 
 %\enlargethispage{12pt}
 
