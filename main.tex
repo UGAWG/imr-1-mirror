@@ -345,6 +345,24 @@ refine/two  & 0.003 &        0.05 &        1.50 \\
 \end{tabular}
 \end{table}
 
+Figure \ref{fig:cube-linear-lengths} shows a more in-depth look
+at the edge length distributions for the linear cube metric
+via histograms.
+One interesting pattern is the presence of two local maxima
+(two ``horns") for EPIC-IC, EPIC-ICS, Omega\_h and refine/two.
+This is likely due to the use of upper and lower thresholds
+to choose when to refine and coarsen edges.
+A refinement can be viewed as removing an edge from a far-right
+histogram bin and creating two edges in bins below the threshold.
+This tends to accumulate edges in bins just below the threshold.
+An analogous process happens for coarsening.
+EPIC-ICSM and feflo.a show a much smoother, bell-curve-like distribution
+with a single maximum.
+This is likely due to their use of mesh smoothing, i.e. vertex
+repositioning, which is not a threshold-based process and therefore
+will redistribute the lengths of all edges (FEFLO.A TEAM PLEASE
+CONFIRM YOU USE SMOOTHING).
+
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
 \centering
@@ -382,7 +400,7 @@ refine/two  & 0.003 &        0.05 &        1.50 \\
 \caption{refine/two}
 \end{subfigure}
 \caption{Length histograms for the linear cube metric}
-\label{fig:cube-linear-histograms}
+\label{fig:cube-linear-lengths}
 \end{figure}
 
 %\enlargethispage{12pt}
