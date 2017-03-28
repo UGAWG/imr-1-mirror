@@ -258,6 +258,18 @@ and efficient operation with isotropic metrics.
 Third, it targets high performance execution using threading
 and even GPUs.
 
+\subsection{EPIC}
+EPIC is a Boeing internally developed grid adaptation tool that combines 
+local edge break, edge collapse, element reconnection and node smoothing 
+operators. EPIC development has focused on industrial aerospace CFD 
+applications with emphasis on robust handling of complex geometry and 
+efficient use of parallel computing resources. Edge lengths in EPIC are 
+computed with numerical integration of the metric field along an edge 
+instead of assuming a linear variation of the metric M in log-Euclidean space 
+as shown in Eq(1). EPIC grids using three sets of mesh operators are presented: 
+only insertion and collapse (EPIC-IC); insertion, collapse, and swap (EPIC-ICS); 
+insertion, collapse, swap, and node movement (EPIC-ICSM).  
+
 \section{Results}
 {\color{red} Dan}
 
