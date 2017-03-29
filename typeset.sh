@@ -10,6 +10,7 @@ function build {
   pdflatex -halt-on-error -non-interactive  $ROOT
   grep "No file $ROOT.bbl." $ROOT.log && bibtex $ROOT && build
   grep "Rerun to get cross" $ROOT.log && build
+  grep "Rerun to get citations" $ROOT.log && build
   grep "run LaTeX again"    $ROOT.log && build
 }
 
