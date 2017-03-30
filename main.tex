@@ -473,6 +473,7 @@ feflo.a     &  0.49 &        0.45 &        1.80 &     45158\\
 Omega\_h    &  0.30 &        0.21 &        1.80 &     51666\\
 refine/one  &  0.06 &        0.03 &        1.80 &    112543\\
 refine/two  &  0.05 &        0.29 &        1.67 &     51587\\
+Pragmatic   &  0.46 &        0.34 &        1.67 &     49332\\
 \end{tabular}
 \end{table}
 
@@ -481,7 +482,7 @@ at the edge length distributions for the linear cube metric
 via histograms.
 Once again we see a distinction between codes with and without
 smoothing, in the presence of two local maxima
-(two ``horns") for EPIC-IC, EPIC-ICS, Omega\_h and refine/two.
+(two ``horns") for EPIC-IC, EPIC-ICS, and Omega\_h.
 This is likely due to the use of upper and lower thresholds
 to choose when to refine and coarsen edges.
 A refinement can be viewed as removing an edge from a far-right
@@ -500,7 +501,6 @@ Recall from Table \ref{tab:cube-linear-stats} that  refine/one produces
 twice as many elements as the other codes, and the explanation for this can be
 found in Figure \ref{fig:cube-linear-lengths-refine-one}:
 it produces many short edges that other codes coarsen.
-(MIKE ANY THOUGHTS ON THE 60K ELEMENTS FOR REFINE/TWO ?).
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
@@ -538,6 +538,11 @@ it produces many short edges that other codes coarsen.
 \centering
 \includegraphics[width=\textwidth]{refine-two-cube-linear-stats.pdf}
 \caption{refine/two}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-linear-stats.pdf}
+\caption{Pragmatic}
 \end{subfigure}
 \caption{Length histograms for the linear cube metric}
 \label{fig:cube-linear-lengths}
