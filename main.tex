@@ -323,7 +323,8 @@ and even GPUs.
 \subsection{EPIC}
 EPIC is a Boeing internally developed grid adaptation tool that combines 
 local edge break, edge collapse, element reconnection and node smoothing 
-operators. EPIC development has focused on industrial aerospace CFD 
+operators.\cite{michal-krakos-aniso-adapt-edge}
+EPIC development has focused on industrial aerospace CFD 
 applications with emphasis on robust handling of complex geometry and 
 efficient use of parallel computing resources. Edge lengths in EPIC are 
 computed with numerical integration of the metric field along an edge 
@@ -331,6 +332,29 @@ instead of assuming a linear variation of the metric M in log-Euclidean space
 as shown in Eq(1). EPIC grids using three sets of mesh operators are presented: 
 only insertion and collapse (EPIC-IC); insertion, collapse, and swap (EPIC-ICS); 
 insertion, collapse, swap, and node movement (EPIC-ICSM).  
+
+\subsection{refine}
+
+Adaptive grids results from two versions of the refine tool are presented.
+They both are designed to produce a
+unit mesh\cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
+in a provided metric field.
+The origial version, refine/one, is documented
+by Park and Darmofal.\cite{park-darmofal-parallel-aniso-adapt-aiaa}
+The current version under development, refine/two,
+utilizes the combination of edge split and collapse operations
+proposed by Michal and Krakos.\cite{michal-krakos-aniso-adapt-edge}
+Node relocation is performed to improve adjecent element quality.
+A new ideal node loction of the node is created
+for each adjacent element.
+A convex combination of these node location is chosen
+to yeild a new node location update the improves
+the element shape measure in the anisotropic
+metric.\cite{alauzet-topology-moving-mesh}
+Geometry is accessed through the
+Electronic Geometry Aircraft Design System
+(EGADS)\cite{haimes-drela-egads}
+application program interface.
 
 \section{Results}
 {\color{red} Dan}
