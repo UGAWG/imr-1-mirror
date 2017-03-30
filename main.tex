@@ -220,14 +220,16 @@ Alauzet and Loseille\cite{alauzet-loseille-decade-aniso-adapt-cfd}
 document the dramatic progress made in the last decade
 for solution adaptive methods that include the anisotropy to
 resolve simulations with shocks and boundary layers.
-They also document remaining challenges.
+Remaining challenges are identified
+by the application of these solution adaptive techniques.
 Park et al.\cite{park-unstruct-adapt-status-cfd2030}~also
 document the current state of solution based anisotropic
 grid adaptation and motivate further development with 
-potential impacts of improved capability.
-This is provided in the context of the 
-CFD Vision 2030 Study by Slotnick et al.\cite{cfd-vision-2030}~provide
-a number of case studies
+the impacts improved capability would have on simulation.
+This focus on unstrcuted grid adaptation
+is provided in the broader context of the 
+CFD Vision 2030 Study by Slotnick et al.\cite{cfd-vision-2030}
+This study provides a number of case studies
 to illustrate the current state of CFD capability and capacity and the
 potential impact of emerging High Performance Computing (HPC)
 environments forecast in year 2030.
@@ -248,7 +250,7 @@ workflows or practitioners.
 Appendix C of Park et al.\cite{park-unstruct-adapt-status-cfd2030}
 address the critical adoption piece of this technology and
 advocate the need for multiple implementations, 
-because research in technology diffusion has identified the
+because technology diffusion research has identified the
 number of institutions that make a firm entry of a product
 into the market is a stronger driver than the strengths of an individual
 product for new technology adoption.
@@ -260,21 +262,22 @@ elements that can be independently verified and improved.
 The current version of the benchmarks focus on the grid adaptation
 mechanics.
 Extensions of the benchmarks are envisioned that examine error
-estimation.
+estimation, which will continue as an acute need for
+efficiency and robustness of grid adaptaion.
 Michal et al.\cite{michal-unstruct-adapt-epic-dpw6}~show that
-a reliable error estimation can reduce the efficiency of advanced
+the lack of a reliable error estimate can reduce the efficiency of advanced
 automated anisotropic grid adaptation methods.
 This benchmark could also become a
 precursor to a workshop (see Levy et al.\cite{dpw5-summary}~or
 Rumsey and Slotnik\cite{rumsey-slotnick-summary-highliftpw2} for examples)
 as the size of the solution adaptive community grows.
 
-This paper describes an effort to provide a benchmark
+Providing a benchmark
 of anisotropic grid adaptation tools 
-to the greater community.
-This allows comparing different implementations
+to the greater community
+allows comparing different implementations
 to understand the implications of implementation choices.
-Then each tool can be verified
+Where each tool can be verified
 by comparison to alternative implementations or
 an analytic result when available.
 Descriptions of each implementation and the
