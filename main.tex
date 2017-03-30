@@ -378,6 +378,8 @@ and the final desired metric.
 In both snapping and metric approaching, the criteria that determines
 the step size is element quality (the step is halved until all elements
 are above a minimum quality in the interpolated metric space).
+For all results presented, the minimum quality threshold was set to 30\%
+(see Equation \ref{eq:quality}).
 
 \section{Results}
 {\color{red} Dan}
@@ -553,9 +555,48 @@ it produces many short edges that other codes coarsen.
 
 \subsection{Linear Cube-Cylinder Case}
 
+\begin{table}
+\caption{Criteria statistics for linear cube-cylinder metric}
+\label{tab:cube-cylinder-linear-stats}
+\begin{tabular}{lrrrr}
+Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
+EPIC-IC     &  0.00 &        0.01 &       57.65 &     32711\\
+EPIC-ICS    &  0.16 &        0.34 &        2.83 &     37481\\
+EPIC-ICSM   &  0.19 &        0.32 &        3.26 &     34236\\
+Omega\_h    &  0.30 &        0.29 &        1.97 &     40956\\
+Pragmatic   &  0.01 &        0.02 &        2.06 &     38668\\
+\end{tabular}
+\end{table}
+
 \subsection{Polar Cube-Cylinder Case}
 
+\begin{table}
+\caption{Criteria statistics for linear cube-cylinder metric}
+\label{tab:polar-1-stats}
+\begin{tabular}{lrrrr}
+Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
+EPIC-IC     &<0.001 &       0.003 &       67.64 &     17338\\
+EPIC-ICS    &  0.05 &        0.13 &        6.32 &     21916\\
+EPIC-ICSM   &  0.05 &        0.20 &        7.45 &     20237\\
+Omega\_h    &  0.14 &        0.11 &        1.71 &     52235\\
+Pragmatic   &  0.01 &        0.02 &        1.74 &     33629\\
+\end{tabular}
+\end{table}
+
 \subsection{Modified Polar Cube-Cylinder Case}
+
+\begin{table}
+\caption{Criteria statistics for linear cube-cylinder metric}
+\label{tab:polar-2-stats}
+\begin{tabular}{lrrrr}
+Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
+EPIC-IC     &<0.001 &      <0.001 &       70.53 &     21664\\
+EPIC-ICS    &  0.15 &        0.30 &        3.01 &     36538\\
+EPIC-ICSM   &  0.19 &        0.45 &        3.04 &     33417\\
+Omega\_h    &  0.30 &        0.24 &        1.81 &     49151\\
+Pragmatic   &  0.05 &        0.12 &        1.73 &     47203\\
+\end{tabular}
+\end{table}
 
 \section{Future Directions}
 {\color{red} Adrien}
