@@ -311,7 +311,10 @@ Motivations for choosing certain metrics.
 
 \subsection{Omega\_h}
 
-Omega\_h is an open-source grid adaptation library, written in C++11.
+Omega\_h is an open-source grid adaptation library, written in C++11
+\cite{ibanez-phd-thesis-heterogeneous-adapt,
+ibanez-shephard-moving-shared-mem,
+omega_h-website}
 Like the other codes in this study, it aims to be a state-of-the-art
 implementation of grid adaptation by local topological modifications.
 Omega\_h has certain unique objectives.
@@ -324,6 +327,19 @@ This motivates a much stronger focus on element quality
 and efficient operation with isotropic metrics.
 Third, it targets high performance execution using threading
 and even GPUs.
+The core algorithm in Omega\_h consists of one loop of alternating
+edge splitting and edge collapsing to satisfy length, followed by another loop
+which uses edge swapping and edge collapsing to satisfy quality.
+Snapping to geometry (using EGADS) is part of the second (quality) loop:
+a step is added which moves all nodes as far as they can towards
+the snapping goal, followed by swapping/collapsing to correct shapes.
+To deal with highly anisotropic target metrics, Omega\_h applies
+its full adaptive algorithm several times, where the metric used
+each time is an interpolated metric between the original implied metric
+and the final desired metric.
+In both snapping and metric approaching, the criteria that determines
+the step size is element quality (the step is halved until all elements
+are above a minimum quality in the interpolated metric space).
 
 \subsection{EPIC}
 EPIC is a Boeing internally developed grid adaptation tool that combines 
@@ -350,7 +366,7 @@ The current version under development, refine/two,
 utilizes the combination of edge split and collapse operations
 proposed by Michal and Krakos.\cite{michal-krakos-aniso-adapt-edge}
 Node relocation is performed to improve adjecent element quality.
-A new ideal node loction of the node is created
+A new ideal node location of the node is created
 for each adjacent element.
 A convex combination of these node location is chosen
 to yeild a new node location update the improves
