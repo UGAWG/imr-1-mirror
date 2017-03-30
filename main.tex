@@ -309,6 +309,44 @@ Motivations for choosing certain metrics.
 \section{Participating Codes}
 {\color{red} Everyone}
 
+\subsection{EPIC}
+
+EPIC is a Boeing internally developed grid adaptation tool that combines 
+local edge break, edge collapse, element reconnection and node smoothing 
+operators \cite{michal-krakos-aniso-adapt-edge}.
+EPIC development has focused on industrial aerospace CFD 
+applications with emphasis on robust handling of complex geometry and 
+efficient use of parallel computing resources. Edge lengths in EPIC are 
+computed with numerical integration of the metric field along an edge 
+instead of assuming a linear variation of the metric M in log-Euclidean space 
+as shown in Equation \ref{eq:length}.
+EPIC grids using three sets of mesh operators are presented: 
+only insertion and collapse (EPIC-IC); insertion, collapse, and swap (EPIC-ICS); 
+insertion, collapse, swap, and node movement (EPIC-ICSM).  
+
+\subsection{refine}
+
+Adaptive grids results from two versions of the refine tool are presented.
+They both are designed to produce a
+unit mesh \cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
+in a provided metric field.
+The origial version, refine/one, is documented
+by Park and Darmofal \cite{park-darmofal-parallel-aniso-adapt-aiaa}.
+The current version under development, refine/two,
+utilizes the combination of edge split and collapse operations
+proposed by Michal and Krakos \cite{michal-krakos-aniso-adapt-edge}.
+Node relocation is performed to improve adjecent element quality.
+A new ideal node location of the node is created
+for each adjacent element.
+A convex combination of these node location is chosen
+to yeild a new node location update the improves
+the element shape measure in the anisotropic
+metric \cite{alauzet-topology-moving-mesh}.
+Geometry is accessed through the
+Electronic Geometry Aircraft Design System
+(EGADS \cite{haimes-drela-egads})
+application program interface.
+
 \subsection{Omega\_h}
 
 Omega\_h is an open-source grid adaptation library, written in C++11
@@ -340,42 +378,6 @@ and the final desired metric.
 In both snapping and metric approaching, the criteria that determines
 the step size is element quality (the step is halved until all elements
 are above a minimum quality in the interpolated metric space).
-
-\subsection{EPIC}
-EPIC is a Boeing internally developed grid adaptation tool that combines 
-local edge break, edge collapse, element reconnection and node smoothing 
-operators.\cite{michal-krakos-aniso-adapt-edge}
-EPIC development has focused on industrial aerospace CFD 
-applications with emphasis on robust handling of complex geometry and 
-efficient use of parallel computing resources. Edge lengths in EPIC are 
-computed with numerical integration of the metric field along an edge 
-instead of assuming a linear variation of the metric M in log-Euclidean space 
-as shown in Eq(1). EPIC grids using three sets of mesh operators are presented: 
-only insertion and collapse (EPIC-IC); insertion, collapse, and swap (EPIC-ICS); 
-insertion, collapse, swap, and node movement (EPIC-ICSM).  
-
-\subsection{refine}
-
-Adaptive grids results from two versions of the refine tool are presented.
-They both are designed to produce a
-unit mesh\cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
-in a provided metric field.
-The origial version, refine/one, is documented
-by Park and Darmofal.\cite{park-darmofal-parallel-aniso-adapt-aiaa}
-The current version under development, refine/two,
-utilizes the combination of edge split and collapse operations
-proposed by Michal and Krakos.\cite{michal-krakos-aniso-adapt-edge}
-Node relocation is performed to improve adjecent element quality.
-A new ideal node location of the node is created
-for each adjacent element.
-A convex combination of these node location is chosen
-to yeild a new node location update the improves
-the element shape measure in the anisotropic
-metric.\cite{alauzet-topology-moving-mesh}
-Geometry is accessed through the
-Electronic Geometry Aircraft Design System
-(EGADS)\cite{haimes-drela-egads}
-application program interface.
 
 \section{Results}
 {\color{red} Dan}
@@ -434,6 +436,8 @@ as the main purpose of solution-based adaptivity is to
 minimize the number of degrees of freedom while maximizing
 accuracy.
 
+\subsection{Linear Cube Case}
+
 Table \ref{tab:cube-linear-stats} presents the statistics
 for the satisfaction criteria that each code
 produced with the linear metric input over the cube domain.
@@ -443,8 +447,7 @@ going from EPIC-IC to EPIC-ICS and EPIC-ICSM.
 The high maximum length measures for EPIC are likely due
 to the fact that it does not use Equations \ref{eq:length}
 and \ref{eq:endpoint_lengths} to measure length
-internally.\cite{park-loseille-krakos-michal-adapt-decomposition}
-(EPIC TEAM PLEASE CONFIRM)
+internally \cite{park-loseille-krakos-michal-adapt-decomposition}.
 Omega\_h, feflo.a, and refine/one
 all achieve the same maximum length of 1.80, although
 feflo.a and Omega\_h have higher qualities
@@ -548,7 +551,11 @@ it produces many short edges that other codes coarsen.
 \label{fig:cube-linear-lengths}
 \end{figure}
 
-%\enlargethispage{12pt}
+\subsection{Linear Cube-Cylinder Case}
+
+\subsection{Polar Cube-Cylinder Case}
+
+\subsection{Modified Polar Cube-Cylinder Case}
 
 \section{Future Directions}
 {\color{red} Adrien}
