@@ -385,6 +385,12 @@ For all results presented, the minimum quality threshold was set to 30\%
 
 \subsection{Pragmatic}
 
+Pragmatic is a 2D and 3D anisotropic remesher developed as a C++ standalone library.
+- hybrid MPI + threads paralellization 
+- integrated to PETSc, FEniCS and Firedrake
+For MPI: adaptation without repartitioning
+series of mesh refinement + swapping + coarsening, then smoothing for fine tuning
+Quality criteria, target
 
 
 \section{Results}
