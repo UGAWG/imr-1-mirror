@@ -516,47 +516,92 @@ it produces many short edges that other codes coarsen.
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{epic-ic-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{epic-ic-cube-linear-length.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{epic-ics-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{epic-ics-cube-linear-length.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{epic-icsm-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{epic-icsm-cube-linear-length.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{fefloa-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{fefloa-cube-linear-length.pdf}
 \caption{feflo.a}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{omega_h-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{omega_h-cube-linear-length.pdf}
 \caption{Omega\_h}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{refine-one-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{refine-one-cube-linear-length.pdf}
 \caption{refine/one}
 \label{fig:cube-linear-lengths-refine-one}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{refine-two-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{refine-two-cube-linear-length.pdf}
 \caption{refine/two}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
-\includegraphics[width=\textwidth]{pragmatic-cube-linear-stats.pdf}
+\includegraphics[width=\textwidth]{pragmatic-cube-linear-length.pdf}
 \caption{Pragmatic}
 \end{subfigure}
 \caption{Length histograms for the linear cube metric}
 \label{fig:cube-linear-lengths}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-linear-quality.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-linear-quality.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-linear-quality.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fefloa-cube-linear-quality.pdf}
+\caption{feflo.a}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-linear-quality.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-one-cube-linear-quality.pdf}
+\caption{refine/one}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-two-cube-linear-quality.pdf}
+\caption{refine/two}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-linear-quality.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Quality histograms for the linear cube metric}
+\label{fig:cube-linear-qualities}
 \end{figure}
 
 \subsection{Linear Cube-Cylinder Case}
@@ -566,43 +611,223 @@ it produces many short edges that other codes coarsen.
 \label{tab:cube-cylinder-linear-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
-EPIC-IC     &  0.00 &        0.01 &       57.65 &     32711\\
-EPIC-ICS    &  0.16 &        0.34 &        2.83 &     37481\\
-EPIC-ICSM   &  0.19 &        0.32 &        3.26 &     34236\\
-Omega\_h    &  0.30 &        0.29 &        1.97 &     40956\\
-Pragmatic   &  0.01 &        0.02 &        2.06 &     38668\\
+EPIC-IC     & $0.00$&       $0.01$&      $57.65$&    $32711$\\
+EPIC-ICS    & $0.16$&       $0.34$&      $ 2.83$&    $37481$\\
+EPIC-ICSM   & $0.19$&       $0.32$&      $ 3.26$&    $34236$\\
+Omega\_h    & $0.30$&       $0.29$&      $ 1.97$&    $40956$\\
+Pragmatic   & $0.01$&       $0.02$&      $ 2.06$&    $38668$\\
 \end{tabular}
 \end{table}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-linear-length.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-linear-length.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-linear-length.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-linear-length.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-linear-length.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Length histograms for the linear cube-cylinder metric}
+\label{fig:cube-cylinder-linear-lengths}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-linear-quality.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-linear-quality.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-linear-quality.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-linear-quality.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-linear-quality.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Quality histograms for the linear cube-cylinder metric}
+\label{fig:cube-cylinder-linear-qualities}
+\end{figure}
 
 \subsection{Polar Cube-Cylinder Case}
 
 \begin{table}
-\caption{Criteria statistics for linear cube-cylinder metric}
+\caption{Criteria statistics for polar cube-cylinder metric}
 \label{tab:polar-1-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
-EPIC-IC     &<0.001 &       0.003 &       67.64 &     17338\\
-EPIC-ICS    &  0.05 &        0.13 &        6.32 &     21916\\
-EPIC-ICSM   &  0.05 &        0.20 &        7.45 &     20237\\
-Omega\_h    &  0.14 &        0.11 &        1.71 &     52235\\
-Pragmatic   &  0.01 &        0.02 &        1.74 &     33629\\
+EPIC-IC    &$<0.001$&      $0.003$&      $67.64$&    $17338$\\
+EPIC-ICS   &$  0.05$&      $ 0.13$&      $ 6.32$&    $21916$\\
+EPIC-ICSM  &$  0.05$&      $ 0.20$&      $ 7.45$&    $20237$\\
+Omega\_h   &$  0.14$&      $ 0.11$&      $ 1.71$&    $52235$\\
+Pragmatic  &$  0.01$&      $ 0.02$&      $ 1.74$&    $33629$\\
 \end{tabular}
 \end{table}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-1-length.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-1-length.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-1-length.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1-length.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-1-length.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Length histograms for the polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-1-lengths}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-1-quality.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-1-quality.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-1-quality.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1-quality.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-1-quality.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Quality histograms for the polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-1-qualities}
+\end{figure}
 
 \subsection{Modified Polar Cube-Cylinder Case}
 
 \begin{table}
-\caption{Criteria statistics for linear cube-cylinder metric}
+\caption{Criteria statistics for modified polar cube-cylinder metric}
 \label{tab:polar-2-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
-EPIC-IC     &<0.001 &      <0.001 &       70.53 &     21664\\
-EPIC-ICS    &  0.15 &        0.30 &        3.01 &     36538\\
-EPIC-ICSM   &  0.19 &        0.45 &        3.04 &     33417\\
-Omega\_h    &  0.30 &        0.24 &        1.81 &     49151\\
-Pragmatic   &  0.05 &        0.12 &        1.73 &     47203\\
+EPIC-IC    &$<0.001$&     $<0.001$&      $70.53$&    $21664$\\
+EPIC-ICS   &$  0.15$&     $  0.30$&      $ 3.01$&    $36538$\\
+EPIC-ICSM  &$  0.19$&     $  0.45$&      $ 3.04$&    $33417$\\
+Omega\_h   &$  0.30$&     $  0.24$&      $ 1.81$&    $49151$\\
+Pragmatic  &$  0.05$&     $  0.12$&      $ 1.73$&    $47203$\\
 \end{tabular}
 \end{table}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-2-length.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-2-length.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-2-length.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-2-length.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-2-length.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Length histograms for the modified polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-2-lengths}
+\end{figure}
+
+\begin{figure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-2-quality.pdf}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-2-quality.pdf}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-2-quality.pdf}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-2-quality.pdf}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-2-quality.pdf}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Quality histograms for the modified polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-2-qualities}
+\end{figure}
 
 \section{Future Directions}
 {\color{red} Adrien}
