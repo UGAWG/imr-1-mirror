@@ -466,7 +466,7 @@ get slightly better element counts (45K).
 This is likely due to their use of smoothing (mesh motion),
 which allows more fine tuning than topology modifications alone
 (FEFLO.A TEAM PLEASE CONFIRM YOU USE SMOOTHING)
-feflo.a is the overall winner in terms of minimum
+feflo.a is the overall best in terms of minimum
 quality, 
 minimum length, and element count.
 refine/two has the best maximum length measure,
@@ -477,14 +477,14 @@ but also the lowest minimum quality.
 \label{tab:cube-linear-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
-EPIC-IC     &  0.10 &        0.15 &        3.48 &     50860\\
-EPIC-ICS    &  0.25 &        0.32 &        3.05 &     49262\\
-EPIC-ICSM   &  0.36 &        0.39 &        2.44 &     45892\\
-feflo.a     &  0.49 &        0.45 &        1.80 &     45158\\
-Omega\_h    &  0.30 &        0.21 &        1.80 &     51666\\
-refine/one  &  0.06 &        0.03 &        1.80 &    112543\\
-refine/two  &  0.05 &        0.29 &        1.67 &     51587\\
-Pragmatic   &  0.46 &        0.34 &        1.67 &     49332\\
+EPIC-IC     & $0.10$&       $0.15$&       $3.48$&   $ 50860$\\
+EPIC-ICS    & $0.25$&       $0.32$&       $3.05$&   $ 49262$\\
+EPIC-ICSM   & $0.36$&       $0.39$&       $2.44$&   $ 45892$\\
+feflo.a     & $0.49$&       $0.45$&       $1.80$&   $ 45158$\\
+Omega\_h    & $0.30$&       $0.21$&       $1.80$&   $ 51666$\\
+refine/one  & $0.06$&       $0.03$&       $1.80$&   $112543$\\
+refine/two  & $0.05$&       $0.29$&       $1.67$&   $ 51587$\\
+Pragmatic   & $0.46$&       $0.34$&       $1.67$&   $ 49332$\\
 \end{tabular}
 \end{table}
 
@@ -492,8 +492,8 @@ Figure \ref{fig:cube-linear-lengths} shows a more in-depth look
 at the edge length distributions for the linear cube metric
 via histograms.
 Once again we see a distinction between codes with and without
-smoothing, in the presence of two local maxima
-(two ``horns") for EPIC-IC, EPIC-ICS, and Omega\_h.
+smoothing, with flatter length profiles
+for EPIC-IC, EPIC-ICS, and Omega\_h showing two distinct local maxima.
 This is likely due to the use of upper and lower thresholds
 to choose when to refine and coarsen edges.
 A refinement can be viewed as removing an edge from a far-right
@@ -559,6 +559,18 @@ it produces many short edges that other codes coarsen.
 \label{fig:cube-linear-lengths}
 \end{figure}
 
+Figure \ref{fig:cube-linear-qualities} presents histograms of element
+quality.
+For quality histograms, the range of $[0,1]$ encompasses all possible
+values of Equation \ref{eq:quality}.
+The codes can be roughly categorized into two groups based on
+how the lower qualities are distributed.
+EPIC-IC, EPIC-ICS, Omega\_h, and refine/two have a more gradual,
+almost linear decay in frequency of quality as quality decreases.
+EPIC-ICSM, feflo.a, and Pragmatic show a tighter distribution
+with most qualities above 50\%, which is also correlated
+with the minimum qualities in Table \ref{tab:cube-linear-stats}.
+
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
 \centering
@@ -606,18 +618,46 @@ it produces many short edges that other codes coarsen.
 
 \subsection{Linear Cube-Cylinder Case}
 
+We now present the first of three cases on the geometry
+which consists of a unit cube with a quarter unit cylinder
+subtracted from it.
+The first cube-cylinder metric is much the same as the
+linear cube metric, forming a kind of planar shock along
+the cube which is normal to the cylinder's axis.
+
+Table \ref{tab:cube-cylinder-linear-stats} shows minima
+and maxima for the relevant criteria for each code.
+On this geometry, we start to see EPIC-IC perform much
+worse than other codes, with the longest edge being over
+50X longer than desired, the shortest edge being
+100X shorter than desired, and the minimum quality being
+below the output precision of our measurement tools.
+Fortunately, EPIC-ICS and EPIC-ICSM perform much better,
+with edge length ranges similar to their cube results,
+although their minimum qualities are a bit lower.
+Omega\_h maintains its minimum quality at 30\%, and
+has a decent edge length range, comparable to the EPIC codes.
+While Pragmatic achieves a good maximum length bound,
+its minimum length and quality are much smaller than they
+were on the linear cube problem.
+
 \begin{table}
 \caption{Criteria statistics for linear cube-cylinder metric}
 \label{tab:cube-cylinder-linear-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
-EPIC-IC     & $0.00$&       $0.01$&      $57.65$&    $32711$\\
-EPIC-ICS    & $0.16$&       $0.34$&      $ 2.83$&    $37481$\\
-EPIC-ICSM   & $0.19$&       $0.32$&      $ 3.26$&    $34236$\\
-Omega\_h    & $0.30$&       $0.29$&      $ 1.97$&    $40956$\\
-Pragmatic   & $0.01$&       $0.02$&      $ 2.06$&    $38668$\\
+EPIC-IC    &$<0.001$&       $0.01$&      $57.65$&    $32711$\\
+EPIC-ICS   &  $0.16$&       $0.34$&      $ 2.83$&    $37481$\\
+EPIC-ICSM  &  $0.19$&       $0.32$&      $ 3.26$&    $34236$\\
+Omega\_h   &  $0.30$&       $0.29$&      $ 1.97$&    $40956$\\
+Pragmatic  &  $0.01$&       $0.02$&      $ 2.06$&    $38668$\\
 \end{tabular}
 \end{table}
+
+Figure \ref{fig:cube-cylinder-linear-lengths} breaks down the
+lengths into histograms.
+It is important to note that we choose our histogram range to
+be $[0,2.5]$, whereas several codes had lengths longer than $2.5$.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
