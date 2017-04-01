@@ -658,6 +658,11 @@ Figure \ref{fig:cube-cylinder-linear-lengths} breaks down the
 lengths into histograms.
 It is important to note that we choose our histogram range to
 be $[0,2.5]$, whereas several codes had lengths longer than $2.5$.
+This time it is EPIC-IC and EPIC-ICS that show two local maxima.
+At the extrema, EPIC-IC and Pragmatic both have noticeable
+percentages of their edges in the very low range of $[0,0.25]$
+while all the EPIC codes show a significant tail of edges
+in the high range $[2.0,2.5]$.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
@@ -688,6 +693,18 @@ be $[0,2.5]$, whereas several codes had lengths longer than $2.5$.
 \caption{Length histograms for the linear cube-cylinder metric}
 \label{fig:cube-cylinder-linear-lengths}
 \end{figure}
+
+The quality histograms for the linear cube-cylinder metric
+are shown in Figure \ref{fig:cube-cylinder-linear-qualities}.
+Here we see an interesting property of EPIC-IC on this geometry:
+a spike of elements in the very low quality range $[0,0.1]$
+which count not be corrected by the limited set of operators.
+EPIC-ICS and EPIC-ICSM correct this spike, suggesting that
+swapping is the key shape-correction operator.
+The histograms of EPIC-ICS, EPIC-ICSM, and Omega\_h all look fairly
+similar, which taper until no significant percentages can be
+seen below 20\%, while Pragmatic has a tail of low-quality
+elements that continue down to the lowest levels.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
@@ -721,6 +738,35 @@ be $[0,2.5]$, whereas several codes had lengths longer than $2.5$.
 
 \subsection{Polar Cube-Cylinder Case}
 
+The second metric on the cube-cylinder geometry follows the surface
+of the cylinder, similar to a boundary layer.
+Due to the curvature of the highly anisotropic portion of the metric,
+the main issue in satisfying this metric is dealing with the
+right rate of metric gradation.
+As presented in Table \ref{tab:polar-1-stats}, all codes shows
+a very low minimum quality.
+
+Omega\_h does not converge if it cannot find a solution with
+all elements above 30\% quality, so for this metric Omega\_h
+pre-processed the metric using gradation control \cite{alauzet-fead-2010-size-gradation-aniso}.
+This is what inspired the creation of the modified polar metric,
+which is an analytic equivalent of what gradation control did
+to the metric, namely to refine along the tangent direction
+in order to reduce the rate of metric gradation in that direction.
+We still judge the resulting Omega\_h mesh by the original polar
+metric, hence its minimum quality result of 14\%.
+
+EPI-IC continues to show poor performance, while EPIC-ICS
+and EPIC-ICSM show better performance.
+EPIC-ICS and EPIC-ICSM have maximum lengths that are approximately
+twice what they were in the linear cube-cylinder case in
+Table \ref{tab:cube-cylinder-linear-stats}, and both codes
+generated about 20K elements.
+Pragmatic shows a good maximum length and produces about 30K
+elements, but has very small minimum lengths and qualities.
+Omega\_h produces the best minimum qualities and lengths,
+but requires over 50K elements to do so.
+
 \begin{table}
 \caption{Criteria statistics for polar cube-cylinder metric}
 \label{tab:polar-1-stats}
@@ -733,6 +779,13 @@ Omega\_h   &$  0.14$&      $ 0.11$&      $ 1.71$&    $52235$\\
 Pragmatic  &$  0.01$&      $ 0.02$&      $ 1.74$&    $33629$\\
 \end{tabular}
 \end{table}
+
+Length histograms for the polar metric in Figure \ref{fig:cube-cylinder-polar-1-lengths}
+show similar patterns for the EPIC codes, with the main difference being the
+reduction of small edges as operators are added.
+All three EPIC codes have gradually decreasing tails that extend into the long edge range.
+Omega\_h and Pragmatic show similar and better controlled distributions, consistent
+with their maximum edge length results.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
@@ -764,6 +817,13 @@ Pragmatic  &$  0.01$&      $ 0.02$&      $ 1.74$&    $33629$\\
 \label{fig:cube-cylinder-polar-1-lengths}
 \end{figure}
 
+In the quality histograms (Figure \ref{fig:cube-cylinder-polar-1-qualities}),
+EPIC-ICS, EPIC-ICSM, and Pragmatic have similar
+profiles where frequency increases almost linearly with quality, but noticeable
+amounts in very low range $[0,0.1]$.
+Omega\_h has a different distribution, likely with a lower average quality,
+but a much steeper and more controlled distribution in the low range.
+
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
 \centering
@@ -784,6 +844,7 @@ Pragmatic  &$  0.01$&      $ 0.02$&      $ 1.74$&    $33629$\\
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1-quality.pdf}
 \caption{Omega\_h}
+\label{fig:omega_h-cube-cylinder-polar-1-quality}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
 \centering
@@ -795,6 +856,22 @@ Pragmatic  &$  0.01$&      $ 0.02$&      $ 1.74$&    $33629$\\
 \end{figure}
 
 \subsection{Modified Polar Cube-Cylinder Case}
+
+The modification made to the polar metric specifically targets
+a reduced gradation rate, and Table \ref{tab:polar-2-stats}
+shows that the minimum qualities improved significantly for all
+codes compared to \ref{tab:polar-1-stats}, suggesting a definite
+connection between metric gradation rate and the best attainable
+element quality.
+Note also that EPIC-ICS and EPIC-ICSM have attained maximum lengths
+on par with their usual best in the linear cases, suggesting that
+gradation rate also has an effect on satisfiability of the metric
+as measured by the length criteria.
+The EPIC codes produces approximately 35K elements, while
+Pragmatic and Omega\_h both produce close to 50K elements,
+suggesting that this is actually the nominal element count
+to be expected when using Equation \ref{eq:length} to measure length.
+Omega\_h is able to attain its threshold quality of 30\%, the best in the group.
 
 \begin{table}
 \caption{Criteria statistics for modified polar cube-cylinder metric}
@@ -808,6 +885,12 @@ Omega\_h   &$  0.30$&     $  0.24$&      $ 1.81$&    $49151$\\
 Pragmatic  &$  0.05$&     $  0.12$&      $ 1.73$&    $47203$\\
 \end{tabular}
 \end{table}
+
+Figure \ref{fig:cube-cylinder-polar-2-lengths} shows largely the
+same length histograms for the modified polar metric as
+Figure \ref{fig:cube-cylinder-polar-2-lengths} showed for the original,
+except for the tapering into the high range for EPIC-ICS and EPIC-ICSM,
+which is consistent with their reduction in maximum edge length.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
@@ -838,6 +921,16 @@ Pragmatic  &$  0.05$&     $  0.12$&      $ 1.73$&    $47203$\\
 \caption{Length histograms for the modified polar cube-cylinder metric}
 \label{fig:cube-cylinder-polar-2-lengths}
 \end{figure}
+
+The quality histograms, on the other hand, show very significant differences
+between the original polar metric in Figure \ref{fig:cube-cylinder-polar-1-qualities}
+and the modified polar metric in Figure \ref{fig:cube-cylinder-polar-2-qualities}.
+All codes (except EPIC-IC) show a good distribution of quality centered to the
+far right with no noticeable percentages in the low range $[0,0.2]$.
+Omega\_h also shows this nominal distribution, as opposed the strange distribution
+it had in Figure \ref{fig:omega_h-cube-cylinder-polar-1-quality}.
+This supports the idea that metric gradation has a significant effect not just
+on minimum attainable quality but on the qualities of elements all throughout the grid.
 
 \begin{figure}
 \begin{subfigure}{.4\textwidth}
