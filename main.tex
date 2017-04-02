@@ -350,13 +350,13 @@ application program interface.
 
 \subsection{Omega\_h}
 
-Omega\_h is an open-source grid adaptation library, written in C++11
+Omega\_h is an open-source grid adaptation library
 \cite{ibanez-phd-thesis-heterogeneous-adapt,
 ibanez-shephard-moving-shared-mem,
-omega_h-website}
+omega_h-website}, developed by RPI and subsequently by Sandia.
 Like the other codes in this study, it aims to be a state-of-the-art
 implementation of grid adaptation by local topological modifications.
-Omega\_h has certain unique objectives.
+Omega\_h has certain unique objectives:
 First, it targets tightly coupled adaptivity within a simulation,
 which requires remapping the solution accurately.
 This motivates minimizing the number of modifications.
@@ -451,6 +451,51 @@ minimize the number of degrees of freedom while maximizing
 accuracy.
 
 \subsection{Linear Cube Case}
+
+\begin{figure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-linear.png}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-linear.png}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-linear.png}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fefloa-cube-linear.png}
+\caption{feflo.a}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-linear.png}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-one-cube-linear.png}
+\caption{refine/one}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{refine-two-cube-linear.png}
+\caption{refine/two}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-linear.png}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Meshes for the linear cube metric}
+\label{fig:cube-linear-meshes}
+\end{figure}
 
 Table \ref{tab:cube-linear-stats} presents the statistics
 for the satisfaction criteria that each code
@@ -631,6 +676,36 @@ The first cube-cylinder metric is much the same as the
 linear cube metric, forming a kind of planar shock along
 the cube which is normal to the cylinder's axis.
 
+\begin{figure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-linear.png}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-linear.png}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-linear.png}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-linear.png}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-linear.png}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Meshes for the linear cube-cylinder metric}
+\label{fig:cube-cylinder-linear-meshes}
+\end{figure}
+
 Table \ref{tab:cube-cylinder-linear-stats} shows minima
 and maxima for the relevant criteria for each code.
 On this geometry, we start to see EPIC-IC perform much
@@ -751,6 +826,36 @@ the main issue in satisfying this metric is dealing with the
 right rate of metric gradation.
 As presented in Table \ref{tab:polar-1-stats}, all codes shows
 a very low minimum quality.
+
+\begin{figure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-1.png}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-1.png}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-1.png}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1.png}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-1.png}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Meshes for the polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-1-meshes}
+\end{figure}
 
 Omega\_h does not converge if it cannot find a solution with
 all elements above 30\% quality, so for this metric Omega\_h
@@ -878,6 +983,36 @@ Pragmatic and Omega\_h both produce close to 50K elements,
 suggesting that this is actually the nominal element count
 to be expected when using Equation \ref{eq:length} to measure length.
 Omega\_h is able to attain its threshold quality of 30\%, the best in the group.
+
+\begin{figure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-2.png}
+\caption{EPIC-IC}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-2.png}
+\caption{EPIC-ICS}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-2.png}
+\caption{EPIC-ICSM}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-2.png}
+\caption{Omega\_h}
+\end{subfigure}
+\begin{subfigure}{.24\textwidth}
+\centering
+\includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-2.png}
+\caption{Pragmatic}
+\end{subfigure}
+\caption{Meshes for the modified polar cube-cylinder metric}
+\label{fig:cube-cylinder-polar-2-meshes}
+\end{figure}
 
 \begin{table}
 \caption{Criteria statistics for modified polar cube-cylinder metric}
