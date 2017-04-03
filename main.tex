@@ -385,12 +385,22 @@ For all results presented, the minimum quality threshold was set to 30\%
 
 \subsection{Pragmatic}
 
-Pragmatic is a 2D and 3D anisotropic remesher developed as a C++ standalone library.
-- hybrid MPI + threads paralellization 
-- integrated to PETSc, FEniCS and Firedrake
-For MPI: adaptation without repartitioning
-series of mesh refinement + swapping + coarsening, then smoothing for fine tuning
-Quality criteria, target
+Pragmatic\cite{pragmatic-website,Gorman-2015} is an open source 2D and 3D anisotropic remesher developed as a C++ library at Imperial College London. 
+Initially targeted at geophysical flow simulations, it now aims at generating quality meshes for a wide range of numerical simulations. It has been integrated into the PETSc library ~\cite{petsc-user-ref,Barral-2016}, making anisotropic adaptation to a wider public. 
+
+Pragmatic was started as a hybrid threads and MPI parallel code. Since then, the enthusiasm for hybrid parallelisation has waned, and this this aspect is not essential in Pragmatic anymore, however, it explains some initial design choices that still have an influence on the code code.
+
+The adapted mesh is obtained from the input mesh through a series of 
+local mesh manipulations: iterative applications of coarsening, edge/face swapping and refinement (in this order) optimise the 
+resolution and the quality of the mesh, and a final quality-constrained 
+Laplacian smoothing step fine-tunes the mesh quality.
+The element internal quality function that is optimised is the element average of the nodal functional defined in Vasilevskii \& Lipnikov~\cite{Vasilevskii-1999}.
+
+Whereas adaptation of surfaces based on CAD representation using the
+Electronic Geometry Aircraft Design System (EGADS \cite{haimes-drela-egads}) is in progress, an ad-hoc procedure projecting new vertices on an analytic surface as soon as they are created is used in this paper.
+
+\subsection{feflo.a}
+{\color{red} Adrien ?}
 
 
 \section{Results}
