@@ -419,7 +419,21 @@ projecting new vertices on an analytic surface as soon as they are
 created is used in this paper.
 
 \subsection{feflo.a}
-{\color{red} Adrien ?}
+{\color{red} Adrien}
+
+Feflo.a is based on a two-step procedure to generate an unit-mesh~\cite{loseille-lohner-adapt-boom, loseille-handbook}. The first step aims at improving the edges length distribution
+with respect to the input metric field. In its original version, only classical edge-based operators (insertion and collapse) are used during this step. 
+The second step is an optimisation procedure where we tend to improve the quality of the mesh by using mesh smoothing
+and swaps of edge and faces of tetrahedra. Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements. For the surface mesh 
+adaptation, a dedicated metric is used to control the deviation to the surface. The surface metric is then combined with the input computational metric. 
+The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API. 
+
+%
+More recently, the classical edge-based operators has been replaced by a unique cavity-based operator~\cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance, 
+to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
+of boundary layer grids~\cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
+and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes~\cite{loseille-imr-metric-ortho-aniso-gen}.
+
 
 
 \section{Results}
@@ -1136,6 +1150,61 @@ on minimum attainable quality but on the qualities of elements all throughout th
 
 \section{Future Directions}
 {\color{red} Adrien}
+
+Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries~\cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}. 
+Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
+the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy. We generally decompose this process
+into 3 main steps:  (1) error estimation (2) mesh generation and (3) solution computation. 
+%One benefit of unstructured mesh adaptation is its ability to adapt to complex geometries as typically  found in aeronautic applications for instance:  landing gear, high lift configurations. Several
+%algorithms to generate anisotropic meshes  with complex geometries exist.  We mention:  (i) edge-based, (iii) cavity-based or  
+% (iv) advancing-point-based.  For the flow solver, we consider second order turbulent flow solver. 
+% 
+ However, the full benefit of adaptivity is then achieved only when (1)-(2)-(3) are optimally combined. 
+This first set of benchmark focus on metric-conformity with respect to an analytical prescribed
+metric on simple geometry.  We list in the following the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
+
+\paragraph{Surface mesh adaptation}   Surface mesh adaptation becomes critical when an initial  mesh is used as in local remeshing approach. 
+This even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and needs to be modified. Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
+%of negative invalid element.  The necessary level of discretisation
+%on the surface is currently never reached in the current best practice grids. 
+This high level of anisotropy has to be then correctly blended 
+which the  surface approximation estimate in order to do not create numerical artefacts on the geometry. 
+The quality, level of anisotropy, robustness and cpu time need to be assessed  for the  algorithms described in this paper.
+We intend to provide test cases  starting from more complex initial meshes and with a  very high level of anisotropy
+near the surface. This will allows to assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
+and the level of anisotropy.
+%\begin{itemize}
+%\item edge-based operators with standard optimizations (smoothing, face-edge swaps)
+%\item point-frontal and cavity-based algorithms. 
+%\end{itemize}
+
+
+\paragraph{CAD integration} For industrial applications, the use of CAD data is crucial as many quantities of interest 
+depends on the geometry. Providing high quality surface mesh becomes a mandatory feature. 
+We intend to define simple test cases featuring one typical CAD issue at a time: missing topology,  CAD tolerances of edges larger than required mesh sizes, 
+bad quality parametrisation.  
+
+
+\paragraph{Adaptive boundary layer} The generation of a boundary layer mesh is generally designed for isotropic surface grids, 
+and is generated only once~\cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}. Consequently, it is necessary to keep the boundary layer frozen while adapting 
+the outer part of the domain~\cite{park-carlson-turbulent-output-adapt-aiaa}. However, this strategy is un-praticable  when the boundary layer
+interacts when other anisotropic features. It is then necessary to design and assess algorithm that are well suited to quickly generate boundary layer mesh
+in the presence of anisotropic surface mesh. Several test cases will be designed:
+(i) analytical boundary layer metric, and then (ii) computational boundary layer metric. 
+
+
+\paragraph{Parallel environment} Finally, the (potential) integration into an HPC environment~\cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied. We intend to re-visit all the data base test cases in a parallel environment. In particular, 
+we can discuss the quality of the generated parallel grids with respect to the sequential one, and also assess the gain of the parallel mesh generation (for
+surface and volume). 
+ 
+
+\medskip 
+
+In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metric
+following the discussion of~\cite{park-unstruct-adapt-status-cfd2030}. We will apply the same approach as in the preliminary study~\cite{park-loseille-krakos-michal-adapt-decomposition}, 
+where only one component is modified (for instance, the error estimate) while the remaining
+components are kept unchanged (flow solver, mesh generation algorithm).
+
 
 \section{Conclusion}
 
