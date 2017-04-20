@@ -217,20 +217,20 @@ aerospace vehicles though Computational Fluid Dynamics (CFD) tools.
 CFD simulation places unique demands on the grids required for
 accurate discretization and solution that are not required
 for other classes of physical modeling.
-Alauzet and Loseille\cite{alauzet-loseille-decade-aniso-adapt-cfd}
+Alauzet and Loseille \cite{alauzet-loseille-decade-aniso-adapt-cfd}
 document the dramatic progress made in the last decade
 for solution adaptive methods that include the anisotropy to
 resolve simulations with shocks and boundary layers.
 Remaining challenges are identified
 by the application of these solution adaptive techniques.
-Park et al.\cite{park-unstruct-adapt-status-cfd2030}~document
+Park et al. \cite{park-unstruct-adapt-status-cfd2030}~document
 the current state of solution based anisotropic
 grid adaptation and motivate further development with
 the impacts improved capability would have on
 aerospace analysis and design.
 This focus on unstructured grid adaptation
 is provided in the broader context of the
-CFD Vision 2030 Study by Slotnick et al.\cite{cfd-vision-2030}
+CFD Vision 2030 Study by Slotnick et al. \cite{cfd-vision-2030}
 The Vision Study provides a number of case studies
 to illustrate the current state of CFD capability and capacity and the
 potential impact of emerging High Performance Computing (HPC)
@@ -253,17 +253,17 @@ and accelerate development to address these bottlenecks.
 The encouragement of new entrants is key to making
 anisotropic grid adaptation technology ubiquitous and truly impacting
 workflows for practitioners.
-Appendix C of Park et al.\cite{park-unstruct-adapt-status-cfd2030}
+Appendix C of Park et al. \cite{park-unstruct-adapt-status-cfd2030}
 address the critical adoption piece of this technology and
 advocates the need for multiple implementations,
 because technology diffusion research has identified the
 number of institutions that make a firm entry of a product
 into the market is a stronger driver than the strengths of an individual
 product for new technology
-adoption.\cite{agarwal-bayus-market-evo-takeoff-innovation}
+adoption \cite{agarwal-bayus-market-evo-takeoff-innovation}.
 
 These benchmark cases are a continuation of the efforts of
-Park et al.\cite{park-loseille-krakos-michal-adapt-decomposition}
+Park et al. \cite{park-loseille-krakos-michal-adapt-decomposition}
 to decompose the solution adaptive process into a number of
 elements that can be independently verified, evaluated, and improved.
 Developing and documenting the evaluation methods is equally important
@@ -274,12 +274,12 @@ Extensions of the benchmarks are envisioned that examine error
 estimation, which will continue as an acute need for
 efficiency and robustness of grid adaptation.
 An example of this accute need is that
-Michal et al.\cite{michal-unstruct-adapt-epic-dpw6}~show that
+Michal et al. \cite{michal-unstruct-adapt-epic-dpw6} show that
 the lack of a reliable error estimate can reduce the efficiency of advanced
 automated anisotropic grid adaptation methods.
 This first benchmark or its extensions could also become a
-precursor to a workshop (see Levy et al.\cite{dpw5-summary}~or
-Rumsey and Slotnik\cite{rumsey-slotnick-summary-highliftpw2} for examples)
+precursor to a workshop (see Levy et al. \cite{dpw5-summary} or
+Rumsey and Slotnik \cite{rumsey-slotnick-summary-highliftpw2} for examples)
 as the size of the solution adaptive community grows.
 
 Providing a benchmark
@@ -294,7 +294,7 @@ Descriptions of each implementation and the
 results of this comparison are documented to ensure correct implementation
 and set the stage for further method development.
 This verification by comparison approach is also employed by the
-Turbulence Modeling Resource Website.\cite{rumsey-smith-huang-turbmodels-description}
+Turbulence Modeling Resource Website \cite{rumsey-smith-huang-turbmodels-description}.
 ``What makes the current website unique is that it focuses on
 providing ready access to equations, grids, and flow solution details
 from previously verified codes as an aid to users
@@ -389,12 +389,12 @@ For all results presented, the minimum quality threshold was set to 30\%
 
 \subsection{Pragmatic}
 
-Pragmatic\cite{pragmatic-website,Gorman-2015} is an open source 2D and
+Pragmatic \cite{pragmatic-website,Gorman-2015} is an open source 2D and
 3D anisotropic remesher developed as a C++ library at Imperial College
 London.  Initially targeted at geophysical flow simulations, it now
 aims at generating quality meshes for a wide range of numerical
 simulations. It has been integrated into the PETSc library
-~\cite{petsc-user-ref,Barral-2016}, making anisotropic adaptation to a
+ \cite{petsc-user-ref,Barral-2016}, making anisotropic adaptation to a
 wider public.
 
 Pragmatic was started as a hybrid threads and MPI parallel code. Since
@@ -408,9 +408,9 @@ local mesh manipulations: iterative applications of coarsening,
 edge/face swapping and refinement (in this order) optimise the
 resolution and the quality of the mesh, and a final
 quality-constrained Laplacian smoothing step fine-tunes the mesh
-quality.  The element internal quality function that is optimised is
+quality. The element internal quality function that is optimised is
 the element average of the nodal functional defined in Vasilevskii \&
-Lipnikov~\cite{Vasilevskii-1999}.
+Lipnikov \cite{Vasilevskii-1999}.
 
 Whereas adaptation of surfaces based on CAD representation using the
 Electronic Geometry Aircraft Design System (EGADS
@@ -421,7 +421,7 @@ created is used in this paper.
 \subsection{feflo.a}
 {\color{red} Adrien}
 
-Feflo.a is based on a two-step procedure to generate an unit-mesh~\cite{loseille-lohner-adapt-boom, loseille-handbook}. The first step aims at improving the edges length distribution
+Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}. The first step aims at improving the edges length distribution
 with respect to the input metric field. In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
 The second step is an optimisation procedure where we tend to improve the quality of the mesh by using mesh smoothing
 and swaps of edge and faces of tetrahedra. Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements. For the surface mesh
@@ -429,10 +429,10 @@ adaptation, a dedicated metric is used to control the deviation to the surface. 
 The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API.
 
 %
-More recently, the classical edge-based operators has been replaced by a unique cavity-based operator~\cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
+More recently, the classical edge-based operators has been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
 to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
-of boundary layer grids~\cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
-and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes~\cite{loseille-imr-metric-ortho-aniso-gen}.
+of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
+and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
 
 
 
@@ -442,10 +442,10 @@ and cavity-based insertion to produce  metric-aligned and metric-orthogonal mesh
 For this publication, we focus on two local criteria of metric
 satisfaction.
 First, we measure the edge-length criterion as presented
-by Park et al.\cite{park-loseille-krakos-michal-adapt-decomposition}
+by Park et al. \cite{park-loseille-krakos-michal-adapt-decomposition}.
 Our formula for edge length is based on an assumption
 that the logarithm of desired length varies linearly along the
-edge,\cite{alauzet-fead-2010-size-gradation-aniso} and is defined
+edge \cite{alauzet-fead-2010-size-gradation-aniso} and is defined
 by Equations \ref{eq:length} and \ref{eq:endpoint_lengths}.
 
 \begin{equation}
@@ -1194,7 +1194,7 @@ on minimum attainable quality but on the qualities of elements all throughout th
 \section{Future Directions}
 {\color{red} Adrien}
 
-Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries~\cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}.
+Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries \cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}.
 Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
 the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy. We generally decompose this process
 into 3 main steps:  (1) error estimation (2) mesh generation and (3) solution computation.
@@ -1229,14 +1229,14 @@ bad quality parametrisation.
 
 
 \paragraph{Adaptive boundary layer} The generation of a boundary layer mesh is generally designed for isotropic surface grids,
-and is generated only once~\cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}. Consequently, it is necessary to keep the boundary layer frozen while adapting
-the outer part of the domain~\cite{park-carlson-turbulent-output-adapt-aiaa}. However, this strategy is un-praticable  when the boundary layer
+and is generated only once \cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}. Consequently, it is necessary to keep the boundary layer frozen while adapting
+the outer part of the domain \cite{park-carlson-turbulent-output-adapt-aiaa}. However, this strategy is un-praticable  when the boundary layer
 interacts when other anisotropic features. It is then necessary to design and assess algorithm that are well suited to quickly generate boundary layer mesh
 in the presence of anisotropic surface mesh. Several test cases will be designed:
 (i) analytical boundary layer metric, and then (ii) computational boundary layer metric.
 
 
-\paragraph{Parallel environment} Finally, the (potential) integration into an HPC environment~\cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied. We intend to re-visit all the data base test cases in a parallel environment. In particular,
+\paragraph{Parallel environment} Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied. We intend to re-visit all the data base test cases in a parallel environment. In particular,
 we can discuss the quality of the generated parallel grids with respect to the sequential one, and also assess the gain of the parallel mesh generation (for
 surface and volume).
 
@@ -1244,7 +1244,7 @@ surface and volume).
 \medskip
 
 In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metric
-following the discussion of~\cite{park-unstruct-adapt-status-cfd2030}. We will apply the same approach as in the preliminary study~\cite{park-loseille-krakos-michal-adapt-decomposition},
+following the discussion of \cite{park-unstruct-adapt-status-cfd2030}. We will apply the same approach as in the preliminary study \cite{park-loseille-krakos-michal-adapt-decomposition},
 where only one component is modified (for instance, the error estimate) while the remaining
 components are kept unchanged (flow solver, mesh generation algorithm).
 
