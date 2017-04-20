@@ -180,7 +180,18 @@
 
 \begin{abstract}
 %% Text of abstract
-Describe what we're trying to do, the website, and analyze the initial results.
+The Unstructured Grid Adaptation Working Group is an open gathering of researchers
+working on adapting tetrahedral and triangle meshes to conform to a metric field.
+Current members span a wide range of institutions including academia,
+industry, and national laboratories.
+The purpose of this group is to create a common basis for understanding and
+improving mesh adaptation.
+We present our first major contribution: a common set of benchmark cases,
+including input meshes and analytic metric specifications, that are publicly
+available to be used for evaluating any mesh adaptation code.
+We also present the results of several existing codes on these benchmark
+cases, to illustrate their utility in identifying key challenges common
+to all codes and important differences between available codes.
 \end{abstract}
 
 \begin{keyword}
@@ -558,8 +569,7 @@ EPIC-IC, EPIC-ICS, and Omega\_h all get roughly
 the same element count (50K), while EPIC-ICSM and feflo.a
 get slightly better element counts (45K).
 This is likely due to their use of smoothing (mesh motion),
-which allows more fine tuning than topology modifications alone
-(FEFLO.A TEAM PLEASE CONFIRM YOU USE SMOOTHING)
+which allows more fine tuning than topology modifications alone.
 feflo.a is the overall best in terms of minimum
 quality,
 minimum length, and element count.
@@ -608,43 +618,43 @@ found in Figure \ref{fig:cube-linear-lengths-refine-one}:
 it produces many short edges that other codes coarsen.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-linear-length.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-linear-length.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-linear-length.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-linear-length.pdf}
 \caption{feflo.a}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-linear-length.pdf}
 \caption{Omega\_h}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{refine-one-cube-linear-length.pdf}
 \caption{refine/one}
 \label{fig:cube-linear-lengths-refine-one}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{refine-two-cube-linear-length.pdf}
 \caption{refine/two}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-linear-length.pdf}
 \caption{Pragmatic}
@@ -653,62 +663,65 @@ it produces many short edges that other codes coarsen.
 \label{fig:cube-linear-lengths}
 \end{figure}
 
-Figure \ref{fig:cube-linear-qualities} presents histograms of element
-quality.
-For quality histograms, the range of $[0,1]$ encompasses all possible
-values of Equation \ref{eq:quality}.
-The codes can be roughly categorized into two groups based on
-how the lower qualities are distributed.
-EPIC-IC, EPIC-ICS, Omega\_h, and refine/two have a more gradual,
-almost linear decay in frequency of quality as quality decreases.
-EPIC-ICSM, feflo.a, and Pragmatic show a tighter distribution
-with most qualities above 50\%, which is also correlated
-with the minimum qualities in Table \ref{tab:cube-linear-stats}.
+We omit the quality histograms for this case in the interest
+of brevity, as all codes showed similar distributions.
+% page limit 13 omg
+% Figure \ref{fig:cube-linear-qualities} presents histograms of element
+% quality.
+% For quality histograms, the range of $[0,1]$ encompasses all possible
+% values of Equation \ref{eq:quality}.
+% The codes can be roughly categorized into two groups based on
+% how the lower qualities are distributed.
+% EPIC-IC, EPIC-ICS, Omega\_h, and refine/two have a more gradual,
+% almost linear decay in frequency of quality as quality decreases.
+% EPIC-ICSM, feflo.a, and Pragmatic show a tighter distribution
+% with most qualities above 50\%, which is also correlated
+% with the minimum qualities in Table \ref{tab:cube-linear-stats}.
 
-\begin{figure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{epic-ic-cube-linear-quality.pdf}
-\caption{EPIC-IC}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{epic-ics-cube-linear-quality.pdf}
-\caption{EPIC-ICS}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{epic-icsm-cube-linear-quality.pdf}
-\caption{EPIC-ICSM}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{fefloa-cube-linear-quality.pdf}
-\caption{feflo.a}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{omega_h-cube-linear-quality.pdf}
-\caption{Omega\_h}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{refine-one-cube-linear-quality.pdf}
-\caption{refine/one}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{refine-two-cube-linear-quality.pdf}
-\caption{refine/two}
-\end{subfigure}
-\begin{subfigure}{.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{pragmatic-cube-linear-quality.pdf}
-\caption{Pragmatic}
-\end{subfigure}
-\caption{Quality histograms for the linear cube metric}
-\label{fig:cube-linear-qualities}
-\end{figure}
+% \begin{figure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{epic-ic-cube-linear-quality.pdf}
+% \caption{EPIC-IC}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{epic-ics-cube-linear-quality.pdf}
+% \caption{EPIC-ICS}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{epic-icsm-cube-linear-quality.pdf}
+% \caption{EPIC-ICSM}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{fefloa-cube-linear-quality.pdf}
+% \caption{feflo.a}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{omega_h-cube-linear-quality.pdf}
+% \caption{Omega\_h}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{refine-one-cube-linear-quality.pdf}
+% \caption{refine/one}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{refine-two-cube-linear-quality.pdf}
+% \caption{refine/two}
+% \end{subfigure}
+% \begin{subfigure}{.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{pragmatic-cube-linear-quality.pdf}
+% \caption{Pragmatic}
+% \end{subfigure}
+% \caption{Quality histograms for the linear cube metric}
+% \label{fig:cube-linear-qualities}
+% \end{figure}
 
 \subsection{Linear Cube-Cylinder Case}
 
@@ -769,6 +782,9 @@ has a decent edge length range, comparable to the EPIC codes.
 While Pragmatic achieves a good maximum length bound,
 its minimum length and quality are much smaller than they
 were on the linear cube problem.
+Note that there is not much difference in the coarse areas
+as seen in Figure \ref{fig:cube-cylinder-linear-meshes},
+so any major difference is likely in the anisotropic region.
 
 \begin{table}
 \caption{Criteria statistics for linear cube-cylinder metric}
@@ -795,32 +811,32 @@ while all the EPIC codes show a significant tail of edges
 in the high range $[2.0,2.5]$.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-linear-length.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-linear-length.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-linear-length.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-linear-length.pdf}
 \caption{Omega\_h}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-linear-length.pdf}
 \caption{Pragmatic}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-linear-length.pdf}
 \caption{feflo.a}
@@ -842,32 +858,32 @@ seen below 20\%, while Pragmatic has a tail of low-quality
 elements that continue down to the lowest levels.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-linear-quality.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-linear-quality.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-linear-quality.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-linear-quality.pdf}
 \caption{Omega\_h}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-linear-quality.pdf}
 \caption{Pragmatic}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-linear-quality.pdf}
 \caption{feflo.a}
@@ -883,7 +899,7 @@ of the cylinder, similar to a boundary layer.
 Due to the curvature of the highly anisotropic portion of the metric,
 the main issue in satisfying this metric is dealing with the
 right rate of metric gradation.
-As presented in Table \ref{tab:polar-1-stats}, all codes shows
+As presented in Table \ref{tab:polar-1-stats}, all codes show
 a very low minimum quality.
 
 \begin{figure}
@@ -906,6 +922,7 @@ a very low minimum quality.
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1.png}
 \caption{Omega\_h}
+\label{fig:omega_h-cube-cylinder-polar-1-mesh}
 \end{subfigure}
 \begin{subfigure}{.24\textwidth}
 \centering
@@ -916,31 +933,38 @@ a very low minimum quality.
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-1.png}
 \caption{feflo.a}
+\label{fig:fefloa-cube-cylinder-polar-1-mesh}
 \end{subfigure}
 \caption{Meshes for the polar cube-cylinder metric}
 \label{fig:cube-cylinder-polar-1-meshes}
 \end{figure}
 
-Omega\_h does not converge if it cannot find a solution with
+Omega\_h does not even converge if it cannot find a solution with
 all elements above 30\% quality, so for this metric Omega\_h
 pre-processed the metric using gradation control \cite{alauzet-fead-2010-size-gradation-aniso}.
-This is what inspired the creation of the modified polar metric,
+The resulting mesh is shown as the result in Figure \ref{fig:omega_h-cube-cylinder-polar-1-mesh}.
+This is what inspired the creation of the modified polar metric
+(see Section \ref{sec:cube-cylinder-polar-2}),
 which is an analytic equivalent of what gradation control did
-to the metric, namely to refine along the tangent direction
-in order to reduce the rate of metric gradation in that direction.
+to the metric.
+In particular, it refines along the tangent direction
+in order to reduce the rate of metric gradation due to curvature.
 We still judge the resulting Omega\_h mesh by the original polar
-metric, hence its minimum quality result of 14\%.
+metric, hence it technically gets a minimum quality result of 14\% here.
 
 EPI-IC continues to show poor performance, while EPIC-ICS
 and EPIC-ICSM show better performance.
 EPIC-ICS and EPIC-ICSM have maximum lengths that are approximately
 twice what they were in the linear cube-cylinder case in
-Table \ref{tab:cube-cylinder-linear-stats}, and both codes
-generated about 20K elements.
-Pragmatic shows a good maximum length and produces about 30K
-elements, but has very small minimum lengths and qualities.
+Table \ref{tab:cube-cylinder-linear-stats}.
+Pragmatic shows a good maximum length,
+but has very small minimum lengths and qualities.
+The curved surface mesh of feflo.a is clearly too coarse
+(see Figure \ref{fig:fefloa-cube-cylinder-polar-1-mesh}),
+likely due to not selecting the best option for handling
+this highly graded metric.
 Omega\_h produces the best minimum qualities and lengths,
-but requires over 50K elements to do so.
+though it requires over 50K elements to do so.
 
 \begin{table}
 \caption{Criteria statistics for polar cube-cylinder metric}
@@ -962,34 +986,37 @@ reduction of small edges as operators are added.
 All three EPIC codes have gradually decreasing tails that extend into the long edge range.
 Omega\_h and Pragmatic show similar and better controlled distributions, consistent
 with their maximum edge length results.
+feflo.a still shows a good distribution, illustrating how histograms alone
+don't capture important details, justifying our inclusion of tables of extrema
+and renderings.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-1-length.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-1-length.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-1-length.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1-length.pdf}
 \caption{Omega\_h}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-1-length.pdf}
 \caption{Pragmatic}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-1-length.pdf}
 \caption{feflo.a}
@@ -1006,33 +1033,33 @@ Omega\_h has a different distribution, likely with a lower average quality,
 but a much steeper and more controlled distribution in the low range.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-1-quality.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-1-quality.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-1-quality.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-1-quality.pdf}
 \caption{Omega\_h}
 \label{fig:omega_h-cube-cylinder-polar-1-quality}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-1-quality.pdf}
 \caption{Pragmatic}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-1-quality.pdf}
 \caption{feflo.a}
@@ -1042,6 +1069,7 @@ but a much steeper and more controlled distribution in the low range.
 \end{figure}
 
 \subsection{Modified Polar Cube-Cylinder Case}
+\label{sec:cube-cylinder-polar-2}
 
 The modification made to the polar metric specifically targets
 a reduced gradation rate, and Table \ref{tab:polar-2-stats}
@@ -1053,11 +1081,13 @@ Note also that EPIC-ICS and EPIC-ICSM have attained maximum lengths
 on par with their usual best in the linear cases, suggesting that
 gradation rate also has an effect on satisfiability of the metric
 as measured by the length criteria.
-The EPIC codes produces approximately 35K elements, while
-Pragmatic and Omega\_h both produce close to 50K elements,
-suggesting that this is actually the nominal element count
-to be expected when using Equation \ref{eq:length} to measure length.
 Omega\_h is able to attain its threshold quality of 30\%, the best in the group.
+
+Perhaps most importantly, note that if one compares the renderings
+in Figure \ref{fig:cube-cylinder-polar-1-meshes} to those in
+Figure \ref{fig:cube-cylinder-polar-2-meshes}, then EPIC-ICS,
+EPIC-ICSM, and feflo.a are now much more in agreement with
+Omega\_h and Pragmatic.
 
 \begin{figure}
 \begin{subfigure}{.24\textwidth}
@@ -1157,32 +1187,32 @@ This supports the idea that metric gradation has a significant effect not just
 on minimum attainable quality but on the qualities of elements all throughout the grid.
 
 \begin{figure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-2-quality.pdf}
 \caption{EPIC-IC}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-2-quality.pdf}
 \caption{EPIC-ICS}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-2-quality.pdf}
 \caption{EPIC-ICSM}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-2-quality.pdf}
 \caption{Omega\_h}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-2-quality.pdf}
 \caption{Pragmatic}
 \end{subfigure}
-\begin{subfigure}{.24\textwidth}
+\begin{subfigure}{.16\textwidth}
 \centering
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-2-quality.pdf}
 \caption{feflo.a}
@@ -1240,9 +1270,6 @@ in the presence of anisotropic surface mesh. Several test cases will be designed
 we can discuss the quality of the generated parallel grids with respect to the sequential one, and also assess the gain of the parallel mesh generation (for
 surface and volume).
 
-
-\medskip
-
 In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metric
 following the discussion of \cite{park-unstruct-adapt-status-cfd2030}. We will apply the same approach as in the preliminary study \cite{park-loseille-krakos-michal-adapt-decomposition},
 where only one component is modified (for instance, the error estimate) while the remaining
@@ -1250,6 +1277,25 @@ components are kept unchanged (flow solver, mesh generation algorithm).
 
 
 \section{Conclusion}
+
+As the first creation of the Unstructured Grid Adaptation Working Group, these benchmark cases have uncovered
+a surprising number of useful insights both into the qualities of participating codes and the
+nature of mesh adaptation in general.
+Most notably, the polar metric illustrates how metric gradation can make the metric difficult to satisfy,
+and how gradation control improves metric conformance across all the participating codes.
+We see that the use of a different edge length criteria by EPIC tends to produce longer edges
+and fewer elements compared to the other codes,
+which is important to know when specifying metrics to a certain code.
+The linear cube metric shows us that in certain cases using nodal repositioning as EPIC and feflo.a do can increase element quality
+beyond what is feasible with topology modification alone,
+while the cube-cylinder cases show that preventing low-quality modifications, as Omega\_h does, better
+controls worst element quality in the more difficult cases.
+
+We hope these and future benchmarks can serve as a common reference point for research in our field,
+as other key benchmarks do in many areas of computational physics.
+We also invite both new and established researchers in this area to acquire the benchmark data
+and apply it to their own codes, and welcome submissions of these results as well
+as ideas for improvements or additions to the benchmark cases.
 
 \bibliography{references}
 \bibliographystyle{model1-num-names}
