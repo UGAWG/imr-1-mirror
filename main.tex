@@ -321,129 +321,91 @@ further development and adoption of solution adaptive methods.
 A central repository for the UGAWG has been established on GitHub at https://github.com/UGAWG.   This site houses the data necessary to set up and run benchmark test cases along with results from various adaptation tools.  The top level of the site is divided into adapt-benchmarks and adapt-results pages.  The adapt-benchmarks section contains a collection of test cases that UGAWG members can use to evaluate meshing tools and includes geometry definitions, initial meshes and metric fields for each case.  The adapt-results section contains results generated and uploaded by various UGAWG participants for several different meshing tools.  These benchmark cases and the associated results provide the opportunity to evaluate, compare and contrast meshing tools with other contemporary toolsets.
 
 \subsection{Geometry Models}
-The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.   The benchmarks are organized by geometry model with a separate page available for each model.      In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained. {\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}  The benchmarks section currently contains two geometry models.  The geometry for the first benchmark case is represented by a unit Cube.   This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.   This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.    By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.  The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.   With this test case, the remeshing tool must maintain the modified surface mesh on a prescribed curved geoemtry surface.  This case tests the ability conform to a metric field while simultaneusly maintaining the geometry shape.   The geometry definition is provided in STEP{\color{red} reference} and EGADS {\color{red} reference} formats for remeshing tools that have an embedded geometry modeling kernel.   Due to the simple shape of this test case the geometry can alternatively be represented analytically in the meshing tool.   
+The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.   The benchmarks are organized by geometry model with a separate page available for each model.      In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained. {\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}  The benchmarks section currently contains two geometry models.  The geometry for the first benchmark case is represented by a unit Cube.   This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.   This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.    By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.  The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.  This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.   The geometry definition is provided in STEP{\color{red} [Reference]} and EGADS {\color{red} [Reference]} formats for remeshing tools that have an embedded geometry modeling kernel.   Due to the simple shape of this test case the geometry can alternatively be represented analytically.   
 
-\subsection{Metric Disbritutions}
-In addition to the geomtery model definition, each benchmark test case includes a prescribed mesh sizing distribution.  The sizing distribution for the current test cases is provided in the form of analytically defined metric functions.   Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.  The first is a linear function with an anisotropic stretching centered about the z=0.5 plane.
+\subsection{Metric Distribution}
+In addition to the geometry definition, each benchmark test case includes a prescribed mesh sizing distribution.  The sizing distribution is provided in the form of analytically defined metric functions.   Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.  The first is a linear function with anisotropic stretching centered about the z=0.5 plane.
 
 The linear metric field is described by
 
-   | h_x^-2   0      0    |
-M =|   0    h_y^-2   0    |
-   |   0      0    h_z^-2 |
+\begin{equation}
+\label{eq:Linear1}
+M = \begin{bmatrix}
+h_x^2 & 0 & 0 \\
+0 & h_y^{-2} & 0 \\
+0 & 0 & h_z^{-2} 
+\end{bmatrix}
+\end{equation}
 
 where
 
-h_x = 0.1
-h_y = 0.1
-h_z = h0 + 2*(0.1-h0)*abs(z-0.5)
-h0 = 0.001
+\begin{eqnarray}
+h_x &=& 0.1 \nonumber \\
+h_y &=& 0.1 \nonumber \\
+h_z &=& h0 + 2*(0.1-h0)*abs(z-0.5) \nonumber \\
+h0 &=& 0.001 \nonumber
+\end{eqnarray}
 
-This metric field is representative of a shear layer in the absence of curvature and will be refered to as the Linear-1 distribution.  
+This metric field is representative of a shear layer in the absence of curvature and will be referred to as the Linear-1 distribution.  
 
 The second metric field is described by 
 
-   | cos(t) -sin(t)   0    || h_r^-2   0      0    || cos(t)  sin(t)   0    |
-M =| sin(t)  cos(t)   0    ||   0    h_t^-2   0    ||-sin(t)  cos(t)   0    |
-   |   0       0      1    ||   0      0    h_z^-2 ||   0       0      1    |
+\begin{equation}
+M = 
+\begin{bmatrix}
+cos(t) & -sin(t) & 0 \\ 
+sin(t) & cos(t) &  0 \\ 
+0   &    0   &  1 
+\end {bmatrix}
+\begin{bmatrix}
+h_r^{-2} &  0  &    0   \\ 
+0 &   h_t^{-2} &  0  \\  
+0 &   0  &  h_z^{-2} 
+\end {bmatrix}
+\begin{bmatrix}
+cos(t) & sin(t) &  0  \\
+-sin(t) & cos(t) &  0  \\
+0  &     0  &    1
+\end {bmatrix}
+\end{equation}
 
 where
 
-r=sqrt(x^2+y^2)
-t=atan2(y,x)
-h_z = 0.1
-h_t = 0.1
-h_r = h0 + 2*(0.1-h0)*abs(r-0.5)
-h0 = 0.001
-# t is in the theta direction
-# r is radial direction
+\begin{eqnarray}
+r &=& sqrt(x^2+y^2) \nonumber \\
+t &=& atan2(y,x) \nonumber \\
+h_z &=& 0.1 \nonumber \\
+h_t &=& 0.1 \nonumber \\
+h_r &=& h0 + 2*(0.1-h0)*abs(r-0.5) \nonumber \\
+h0 &=& 0.001 \nonumber
+\end{eqnarray}
 
-This metric field represents a curved shear layer and is positioned such that is cooresponds with the curved surface of the Cube-Cylinder geometry.  This metric distribution will be refered to as the Polar-1 distribution.   
+In the above equations, t is in the theta direction and r is radial direction
+
+This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.  This metric distribution will be referred to as the Polar-1 distribution.   
 
 A slight modification to the Polar-1 distribution is also utilized and is defined as 
 
-d = abs(0.6 - r) * 10
-h_t = (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
+\begin{eqnarray}
+d &=& abs(0.6 - r) * 10 \\
+h_t &=& (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
+\end{eqnarray}
 
-This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be refered to as the Polar-2 distribution.
+This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be referred to as the Polar-2 distribution.
 
-\subsection{Benchmark Test Cases}
-Data for three benchmark test cases is available.  The first cases consists of the Cube geometry with the Linear-1 metric distribution.   This baseline benchmark tests the ability of a meshing tool to build a mesh that conforms to a metric distribution in the absence of geometry or metric curvature.  Metric conformance is measured by comparing the edge lengths of the resulting mesh with the prescribed metric distribution.  An effective anisotropic meshing tool should be able to perform this benchmark on par with other meshing tools.  Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
+\subsection{Test Cases}
+Three benchmark test cases have been defined for this paper.  The first case consists of the Cube geometry with the Linear-1 metric distribution.   This baseline benchmark tests the ability of a meshing tool to build a mesh that conforms to a metric distribution in the absence of geometry or metric curvature.  Metric conformance is measured by comparing the edge lengths of the resulting mesh with the prescribed metric distribution.  An effective anisotropic meshing tool should be able to perform this benchmark on par with other meshing tools.  Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
 
-The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.  The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.  The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.  This case is respresentative of attached shear layers commonly found in fluid flow problems.  The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
+The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.  The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.  The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.  This case is representative of attached shear layers commonly found in fluid flow problems.  The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
 
 Evaluation criteria for the Cube-Cylinder test cases include metric conformance as measured by edge length relative to the prescribed Metric,{\color{red} should we or are we also mesuring distance of surface points from the prescribed geometry, element shape compared to the Metric, ...}.
-
 
 Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation. {\color{red}[Is this what we all do, or should it go in code description sections ?]}
 
 \subsection{Evaluation Framework}
 
-{\color {red} This section needs help from someone that did the evaluation}
-To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.   The .meshb format was chosen as the common file format for transfering mesh data between the meshers and the mesh evaluation tool.  Each mesh was read into the evaluation tool and compared against the analytic metric field.   Statistical data in the form of ? was computed for each mesh and a distribution of edge lengths is plotted.   Comparisons of the resulting evaluation data is provided in the Results section.f the site is divided into adapt-benchmarks and adapt-results pages.  The adapt-benchmarks section contains a collection of test cases that UGAWG members can use to evaluate their tools and includes geoemtry defintions, initial meshes and metric definitions for each case.  The adapt-results section contains test case results generated and uploaded by various UGAWG participants for several different meshing tools.  These benchmark cases and results provide the opportunity to evaluate, compare and contrast meshing tools with other representative toolsets.
-
-\subsection{Geometry Models}
-The adapt-benchmarks section of the respostory is organzied such that new benchmark cases can easily be added.   The benchmarks are organzied by geometry model with a separate page available for each model.      In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained. {\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}  Two benchmarks section currently contains two geometry models.  The geometry for the first benchmark case is represented by a unit Cube.   This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.   This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.    By removing geoemtry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.  The second geometry model consists of a unit cube intesected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.   With this test case, the remeshing tool must maintain the modified surface mesh on a prescribed curved geoemtry surface.  This case tests the ability conform to a metric field while simultaneusly maintaining the geometry shape.   The geometry definition is provided in STEP{\color{red} reference} and EGADS {\color{red} reference} formats for remeshing tools that have an embedded geometry modeling kernel.   Due to the simple shape of this test case the geometry can alternatively be represented analytically in the meshing tool.   
-
-\subsection{Metric Disbritutions}
-In addition to the geomtery model definition, each benchmark test case includes a prescribed mesh sizing distribution.  The sizing distribution for the current test cases is provided in the form of analytically defined metric functions.   Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.  The first is a linear function with an anisotropic stretching centered about the z=0.5 plane.
-
-The linear metric field is described by
-
-   | h_x^-2   0      0    |
-M =|   0    h_y^-2   0    |
-   |   0      0    h_z^-2 |
-
-where
-
-h_x = 0.1
-h_y = 0.1
-h_z = h0 + 2*(0.1-h0)*abs(z-0.5)
-h0 = 0.001
-
-This metric field is representative of a shear layer in the absence of curvature and will be refered to as the Linear-1 distribution.  
-
-The second metric field is described by 
-
-   | cos(t) -sin(t)   0    || h_r^-2   0      0    || cos(t)  sin(t)   0    |
-M =| sin(t)  cos(t)   0    ||   0    h_t^-2   0    ||-sin(t)  cos(t)   0    |
-   |   0       0      1    ||   0      0    h_z^-2 ||   0       0      1    |
-
-where
-
-r=sqrt(x^2+y^2)
-t=atan2(y,x)
-h_z = 0.1
-h_t = 0.1
-h_r = h0 + 2*(0.1-h0)*abs(r-0.5)
-h0 = 0.001
-# t is in the theta direction
-# r is radial direction
-
-This metric field represents a curved shear layer and is positioned such that is cooresponds with the curved surface of the Cube-Cylinder geometry.  This metric distribution will be refered to as the Polar-1 distribution.   
-
-A slight modification to the Polar-1 distribution is also utilized and is defined as 
-
-d = abs(0.6 - r) * 10
-h_t = (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
-
-This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be refered to as the Polar-2 distribution.
-
-\subsection{Benchmark Test Cases}
-Data for three benchmark test cases is available.  The first cases consists of the Cube geometry with the Linear-1 metric distribution.   This baseline benchmark tests the ability of a meshing tool to build a mesh that conforms to a metric distribution in the absence of geometry or metric curvature.  Metric conformance is measured by comparing the edge lengths of the resulting mesh with the prescribed metric distribution.  An effective anisotropic meshing tool should be able to perform this benchmark on par with other meshing tools.  Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
-
-The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.  The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.  The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.  This case is respresentative of attached shear layers commonly found in fluid flow problems.  The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
-
-Evaluation criteria for the Cube-Cylinder test cases include metric conformance as measured by edge length relative to the prescribed Metric,{\color{red} should we or are we also mesuring distance of surface points from the prescribed geometry, element shape compared to the Metric, ...}.
-
-
-Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation. {\color{red}[Is this what we all do, or should it go in code description sections ?]}
-
-\subsection{Evaluation Framework}
-
-{\color {red} This section needs help from someone that did the evaluation}
-To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.   The .meshb format was chosen as the common file format for transfering mesh data between the meshers and the mesh evaluation tool.  Each mesh was read into the evaluation tool and compared against the analytic metric field.   Statistical data in the form of ? was computed for each mesh and a distribution of edge lengths is plotted.   Comparisons of the resulting evaluation data is provided in the Results section.
-
+{\color {red} I have not followed the evaluation approach, so this section needs to be modified to be consistent with our approach}
+To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.   The .meshb {\color{red}reference} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.  Each mesh was read into the evaluation tool and compared against the analytic metric field.   Statistical data in the form of {\color {red}?} was computed for each mesh and a distribution of edge lengths is plotted.   A comparison and analysis of the resulting evaluation data is provided in the Results section. 
 
 
 \section{Participating Codes}
