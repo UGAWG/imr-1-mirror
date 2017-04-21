@@ -424,19 +424,19 @@ the functional defined in Vasilevskii \& Lipnikov~\cite{Vasilevskii-1999}.
 
 Pragmatic was started as a hybrid threads and MPI parallel code. Since
 then, the enthusiasm for hybrid parallelisation has waned on the solvers side,
-and hybridisation has been dropped in favor of a more classic purely distributed memory approach in Pragmatic. 
-However, some initial design choices were driven
-by this approach and still have an influence on the code. 
+and hybridisation has been dropped in favor of a more classic purely 
+distributed memory approach in Pragmatic. However, some initial design 
+choices were driven by this approach and still have an influence on the code. 
 
 Whereas adaptation of surfaces based on CAD representation using the
 Electronic Geometry Aircraft Design System (EGADS~\cite{haimes-drela-egads})
-is in progress, an ad-hoc procedure is used in
-this paper, that projects new vertices onto an analytic surface 
-as soon as they are created.
+is in progress, an ad-hoc procedure is used in this paper, that projects 
+new vertices onto an analytic surface as soon as they are created.
 
-Note that in the polar cube-cylinder case {\color{red}[TODO ref]}, a coarser metric
-is initially prescribed (with a bigger $h_0$) and is progressively modified to reach
-the desired metric (by dividing $h_0$ by two at each Pragmatic call).
+Note that in the polar cube-cylinder case~{\color{red}\ref{TODO}}, snapping 
+to the surface required to initially prescribe a coarser metric (with $h_0 =0.1 $)
+and then to progressively bring it to the desired metric (by dividing 
+$h_0$ by two iteratively).
 
 
 \subsection{feflo.a}
