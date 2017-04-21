@@ -328,7 +328,7 @@ Cube
 
 Cube-Cylinder
 
-
+Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation. {\color{red}[Is this what we all do, or should it go in code description sections ?]}
 
 \section{Participating Codes}
 {\color{red} Everyone}
@@ -408,34 +408,36 @@ For all results presented, the minimum quality threshold was set to 30\%
 
 \subsection{Pragmatic}
 
-Pragmatic \cite{pragmatic-website,Gorman-2015} is an open source 2D and
+Pragmatic~\cite{pragmatic-website,Gorman-2015} is an open source 2D and
 3D anisotropic remesher developed as a C++ library at Imperial College
 London.  Initially targeted at geophysical flow simulations, it now
 aims at generating quality meshes for a wide range of numerical
-simulations. It has been integrated into the PETSc library
- \cite{petsc-user-ref,Barral-2016}, making anisotropic adaptation to a
-wider public.
-
-Pragmatic was started as a hybrid threads and MPI parallel code. Since
-then, the enthusiasm for hybrid parallelisation has waned, and this
-this aspect is not essential in Pragmatic anymore, however, it
-explains some initial design choices that still have an influence on
-the code.
+simulations. It has been integrated into the PETSc library~\cite{petsc-user-ref,Barral-2016}.
 
 The adapted mesh is obtained from the input mesh through a series of
-local mesh manipulations: iterative applications of coarsening,
-edge/face swapping and refinement (in this order) optimise the
-resolution and the quality of the mesh, and a final
-quality-constrained Laplacian smoothing step fine-tunes the mesh
+local mesh manipulations. Iterative applications of coarsening (edge collapse),
+edge/face swapping and refinement (edge splitting) first optimise the
+resolution and the quality of the mesh, followed by a final
+quality-constrained Laplacian smoothing step that fine-tunes the mesh
 quality. The element internal quality function that is optimised is
-the element average of the nodal functional defined in Vasilevskii \&
-Lipnikov \cite{Vasilevskii-1999}.
+the functional defined in Vasilevskii \& Lipnikov~\cite{Vasilevskii-1999}.
+
+Pragmatic was started as a hybrid threads and MPI parallel code. Since
+then, the enthusiasm for hybrid parallelisation has waned on the solvers side,
+and hybridisation has been dropped in favor of a more classic purely distributed memory approach in Pragmatic. 
+However, some initial design choices were driven
+by this approach and still have an influence on the code. 
 
 Whereas adaptation of surfaces based on CAD representation using the
-Electronic Geometry Aircraft Design System (EGADS
-\cite{haimes-drela-egads}) is in progress, an ad-hoc procedure
-projecting new vertices on an analytic surface as soon as they are
-created is used in this paper.
+Electronic Geometry Aircraft Design System (EGADS~\cite{haimes-drela-egads})
+is in progress, an ad-hoc procedure is used in
+this paper, that projects new vertices onto an analytic surface 
+as soon as they are created.
+
+Note that in the polar cube-cylinder case {\color{red}[TODO ref]}, a coarser metric
+is initially prescribed (with a bigger $h_0$) and is progressively modified to reach
+the desired metric (by dividing $h_0$ by two at each Pragmatic call).
+
 
 \subsection{feflo.a}
 {\color{red} Adrien}
@@ -448,7 +450,7 @@ adaptation, a dedicated metric is used to control the deviation to the surface. 
 The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API.
 
 %
-More recently, the classical edge-based operators has been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
+More recently, the classical edge-based operators have been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
 to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
 of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
