@@ -728,10 +728,9 @@ smoothing, with flatter length profiles
 for EPIC-IC, EPIC-ICS, and Omega\_h showing two distinct local maxima.
 This is likely due to the use of upper and lower thresholds
 to choose when to refine and coarsen edges.
-A refinement can be viewed as removing an edge from a far-right
-histogram bin (above the threshold) and adding several edges to bins further left.
-This tends to accumulate edges in bins just below the threshold.
-An analogous process happens for coarsening.
+A refinement can be viewed as removing an edge from a high
+histogram bin and adding several edges to lower bins,
+accumulating edges in bins just below the threshold.
 Since the thresholds are typically spaced a factor of two apart,
 we see the two accumulations of edges.
 EPIC-ICSM and feflo.a show a much smoother, bell-curve-like distribution
