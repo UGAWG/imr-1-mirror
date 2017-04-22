@@ -220,7 +220,6 @@ Type your keywords here, separated by semicolons ;
 
 %\enlargethispage{-7mm}
 \section{Introduction}
-{\color{red} Mike}
 
 Continued advancements in both computers and algorithms
 have revolutionized the analysis and design processes for
@@ -310,7 +309,7 @@ Turbulence Modeling Resource Website \cite{rumsey-smith-huang-turbmodels-descrip
 providing ready access to equations, grids, and flow solution details
 from previously verified codes as an aid to users
 who wish to verify their own implementations of models on
-relatively simple cases \cite{rumsey-smith-huang-turbmodels-description}.
+relatively simple cases" \cite{rumsey-smith-huang-turbmodels-description}.
 The goal of this work is to define a framework for
 rigorous examination of anisotropic grid adaptation methods
 that can guide the implementation and
@@ -331,14 +330,12 @@ compare and contrast meshing tools with other contemporary toolsets.
 
 The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.
 The benchmarks are organized by geometry model with a separate page available for each model.
-In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained.
-{\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}
 The benchmarks section currently contains two geometry models.
-The geometry for the first benchmark case is represented by a unit Cube.
+The geometry for the first benchmark case is represented by a unit cube.
 This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.
 This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.
 By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.
-The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.
+The second geometry model consists subtracts from the unit cube a cylinder of radius 0.5 oriented along the z axis positioned at $x=0$, $y=0$.
 This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.
 The geometry definition is provided in STEP \cite{STEP-website} and 
 Electronic Geometry Aircraft Design System
@@ -584,8 +581,7 @@ and cavity-based insertion to produce metric-aligned and metric-orthogonal meshe
 \section{Results}
 \label{sec:results}
 
-For this publication, we focus on two local criteria of metric
-satisfaction.
+For this publication, we use two local criteria of metric satisfaction.
 First, we measure the edge-length criterion as presented
 by Park et al. \cite{park-loseille-krakos-michal-adapt-decomposition}.
 Our formula for edge length is based on an assumption
@@ -607,10 +603,10 @@ L_a = (v_e^T M_a v_e)^{\frac12},
 L_b = (v_e^T M_b v_e)^{\frac12}
 \end{equation}
 
-Second, we also present element quality results, using the
+Second, we also examine element quality, using the
 mean ratio formula for tetrahedra (Equation \ref{eq:quality})
 where $K$ is a tetrahedron, $|K|$ is its volume,
-$v_e$ is the vector along one of its 6 edges $e$,
+$v_e$ is the vector along one of its edges $e$,
 and $|\hat{K}|$ is the volume of a tetrahedron
 with unit edge lengths.
 $M_{\text{max}}$ is a single metric tensor
@@ -707,8 +703,6 @@ which allows more fine tuning than topology modifications alone.
 feflo.a is the overall best in terms of minimum
 quality,
 minimum length, and element count.
-refine/two has the best maximum length measure,
-but also the lowest minimum quality.
 
 \begin{table}
 \caption{Criteria statistics for linear cube metric}
@@ -742,11 +736,8 @@ Since the thresholds are typically spaced a factor of two apart,
 we see the two accumulations of edges.
 EPIC-ICSM and feflo.a show a much smoother, bell-curve-like distribution
 with a single maximum.
-This is likely due to their use of mesh smoothing, i.e. vertex
-repositioning, which is not a threshold-based process and therefore
-will redistribute the lengths of all edges.
 
-Recall from Table \ref{tab:cube-linear-stats} that  refine/one produces
+Recall from Table \ref{tab:cube-linear-stats} that refine/one produces
 twice as many elements as the other codes, and the explanation for this can be
 found in Figure \ref{fig:cube-linear-lengths-refine-one}:
 it produces many short edges that other codes coarsen.
@@ -799,72 +790,11 @@ it produces many short edges that other codes coarsen.
 
 We omit the quality histograms for this case in the interest
 of brevity, as all codes showed similar distributions.
-% page limit 13 omg
-% Figure \ref{fig:cube-linear-qualities} presents histograms of element
-% quality.
-% For quality histograms, the range of $[0,1]$ encompasses all possible
-% values of Equation \ref{eq:quality}.
-% The codes can be roughly categorized into two groups based on
-% how the lower qualities are distributed.
-% EPIC-IC, EPIC-ICS, Omega\_h, and refine/two have a more gradual,
-% almost linear decay in frequency of quality as quality decreases.
-% EPIC-ICSM, feflo.a, and Pragmatic show a tighter distribution
-% with most qualities above 50\%, which is also correlated
-% with the minimum qualities in Table \ref{tab:cube-linear-stats}.
-
-% \begin{figure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-ic-cube-linear-quality.pdf}
-% \caption{EPIC-IC}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-ics-cube-linear-quality.pdf}
-% \caption{EPIC-ICS}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-icsm-cube-linear-quality.pdf}
-% \caption{EPIC-ICSM}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{fefloa-cube-linear-quality.pdf}
-% \caption{feflo.a}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{omega_h-cube-linear-quality.pdf}
-% \caption{Omega\_h}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{refine-one-cube-linear-quality.pdf}
-% \caption{refine/one}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{refine-two-cube-linear-quality.pdf}
-% \caption{refine/two}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{pragmatic-cube-linear-quality.pdf}
-% \caption{Pragmatic}
-% \end{subfigure}
-% \caption{Quality histograms for the linear cube metric}
-% \label{fig:cube-linear-qualities}
-% \end{figure}
 
 \subsection{Linear Cube-Cylinder Case}
 
-We now present the first of three cases on the geometry
-which consists of a unit cube with a quarter unit cylinder
-subtracted from it.
-The first cube-cylinder metric is much the same as the
-linear cube metric, forming a kind of planar shock along
-the cube which is normal to the cylinder's axis.
+We now present the first of three cases on the Cube-Cylinder geometry,
+which adds geometric curvature as a new difficulty.
 
 \begin{figure}
 \begin{subfigure}{.24\textwidth}
@@ -909,16 +839,12 @@ worse than other codes, with the longest edge being over
 100X shorter than desired, and the minimum quality being
 below the output precision of our measurement tools.
 Fortunately, EPIC-ICS and EPIC-ICSM perform much better,
-with edge length ranges similar to their cube results,
-although their minimum qualities are a bit lower.
+with edge length ranges similar to their cube results.
 Omega\_h maintains its minimum quality at 30\%, and
 has a decent edge length range, comparable to the EPIC codes.
 While Pragmatic achieves a good maximum length bound,
 its minimum length and quality are much smaller than they
 were on the linear cube problem.
-Note that there is not much difference in the coarse areas
-as seen in Figure \ref{fig:cube-cylinder-linear-meshes},
-so any major difference is likely in the anisotropic region.
 
 \begin{table}
 \caption{Criteria statistics for linear cube-cylinder metric}
@@ -936,8 +862,6 @@ feflo.a    &  $0.04$&       $0.21$&      $ 2.55$&    $46291$\\
 
 Figure \ref{fig:cube-cylinder-linear-lengths} breaks down the
 lengths into histograms.
-It is important to note that we choose our histogram range to
-be $[0,2.5]$, whereas several codes had lengths longer than $2.5$.
 This time it is EPIC-IC and EPIC-ICS that show two local maxima.
 At the extrema, EPIC-IC and Pragmatic both have noticeable
 percentages of their edges in the very low range of $[0,0.25]$
@@ -983,7 +907,7 @@ The quality histograms for the linear cube-cylinder metric
 are shown in Figure \ref{fig:cube-cylinder-linear-qualities}.
 Here we see an interesting property of EPIC-IC on this geometry:
 a spike of elements in the very low quality range $[0,0.1]$
-which count not be corrected by the limited set of operators.
+which could not be corrected by its limited set of operators.
 EPIC-ICS and EPIC-ICSM correct this spike, suggesting that
 swapping is the key shape-correction operator.
 The histograms of EPIC-ICS, EPIC-ICSM, and Omega\_h all look fairly
@@ -1026,15 +950,13 @@ elements that continue down to the lowest levels.
 \label{fig:cube-cylinder-linear-qualities}
 \end{figure}
 
-\subsection{Polar Cube-Cylinder Case}
+\subsection{Polar-1 Cube-Cylinder Case}
 \label{sec:cube-cylinder-polar-1}
 
-The second metric on the cube-cylinder geometry follows the surface
-of the cylinder, similar to a boundary layer.
-Due to the curvature of the highly anisotropic portion of the metric,
+Due to the curvature of the metric specification itself,
 the main issue in satisfying this metric is dealing with the
-right rate of metric gradation.
-As presented in Table \ref{tab:polar-1-stats}, all codes show
+resulting high rate of metric gradation.
+As presented in Table \ref{tab:polar-1-stats}, all codes produced
 a very low minimum quality.
 
 \begin{figure}
@@ -1098,8 +1020,6 @@ The curved surface mesh of feflo.a is clearly too coarse
 (see Figure \ref{fig:fefloa-cube-cylinder-polar-1-mesh}),
 likely due to not selecting the best option for handling
 this highly graded metric.
-Omega\_h produces the best minimum qualities and lengths,
-though it requires over 50K elements to do so.
 
 \begin{table}
 \caption{Criteria statistics for polar cube-cylinder metric}
@@ -1118,11 +1038,10 @@ feflo.a    &$  0.01$&      $ 0.18$&      $17.40$&    $35310$\\
 Length histograms for the polar metric in Figure \ref{fig:cube-cylinder-polar-1-lengths}
 show similar patterns for the EPIC codes, with the main difference being the
 reduction of small edges as operators are added.
-All three EPIC codes have gradually decreasing tails that extend into the long edge range.
 Omega\_h and Pragmatic show similar and better controlled distributions, consistent
 with their maximum edge length results.
 feflo.a still shows a good distribution, illustrating how histograms alone
-don't capture important details, justifying our inclusion of tables of extrema
+don't capture important details, and justifying our inclusion of tables of extrema
 and renderings.
 
 \begin{figure}
@@ -1209,7 +1128,7 @@ but a much steeper and more controlled distribution in the low range.
 The modification made to the polar metric specifically targets
 a reduced gradation rate, and Table \ref{tab:polar-2-stats}
 shows that the minimum qualities improved significantly for all
-codes compared to \ref{tab:polar-1-stats}, suggesting a definite
+codes compared to Table \ref{tab:polar-1-stats}, suggesting a
 connection between metric gradation rate and the best attainable
 element quality.
 Note also that EPIC-ICS and EPIC-ICSM have attained maximum lengths
@@ -1217,8 +1136,7 @@ on par with their usual best in the linear cases, suggesting that
 gradation rate also has an effect on satisfiability of the metric
 as measured by the length criteria.
 Omega\_h is able to attain its threshold quality of 30\%, the best in the group.
-
-Perhaps most importantly, note that if one compares the renderings
+Finally, note that if one compares the renderings
 in Figure \ref{fig:cube-cylinder-polar-1-meshes} to those in
 Figure \ref{fig:cube-cylinder-polar-2-meshes}, then EPIC-ICS,
 EPIC-ICSM, and feflo.a are now much more in agreement with
@@ -1276,50 +1194,17 @@ feflo.a    &$  0.06$&     $  0.18$&      $ 2.65$&    $53117$\\
 The length histograms for the modified polar metric were largely the
 same as for the original polar metric
 (Figure \ref{fig:cube-cylinder-polar-1-lengths}),
-except for the tapering into the high range for EPIC-ICS and EPIC-ICSM,
-which is consistent with their reduction in maximum edge length.
-We have omitted these histograms for brevity.
-
-% Trying to get us under the 13 page limit !
-% \begin{figure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-ic-cube-cylinder-polar-2-length.pdf}
-% \caption{EPIC-IC}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-ics-cube-cylinder-polar-2-length.pdf}
-% \caption{EPIC-ICS}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{epic-icsm-cube-cylinder-polar-2-length.pdf}
-% \caption{EPIC-ICSM}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{omega_h-cube-cylinder-polar-2-length.pdf}
-% \caption{Omega\_h}
-% \end{subfigure}
-% \begin{subfigure}{.24\textwidth}
-% \centering
-% \includegraphics[width=\textwidth]{pragmatic-cube-cylinder-polar-2-length.pdf}
-% \caption{Pragmatic}
-% \end{subfigure}
-% \caption{Length histograms for the modified polar cube-cylinder metric}
-% \label{fig:cube-cylinder-polar-2-lengths}
-% \end{figure}
+and we omit them for brevity.
 
 The quality histograms, on the other hand, show very significant differences
 between the original polar metric in Figure \ref{fig:cube-cylinder-polar-1-qualities}
 and the modified polar metric in Figure \ref{fig:cube-cylinder-polar-2-qualities}.
-All codes (except EPIC-IC) show a good distribution of quality centered to the
+All codes (except EPIC-IC) now show a good distribution of quality centered to the
 far right with no noticeable percentages in the low range $[0,0.2]$.
 Omega\_h also shows this nominal distribution, as opposed the strange distribution
 it had in Figure \ref{fig:omega_h-cube-cylinder-polar-1-quality}.
 This supports the idea that metric gradation has a significant effect not just
-on minimum attainable quality but on the qualities of elements all throughout the grid.
+on minimum attainable quality but on the qualities of elements all throughout the mesh.
 
 \begin{figure}
 \begin{subfigure}{.16\textwidth}
@@ -1357,7 +1242,6 @@ on minimum attainable quality but on the qualities of elements all throughout th
 \end{figure}
 
 \section{Future Directions}
-{\color{red} Adrien}
 
 Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries \cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}.
 Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
