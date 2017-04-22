@@ -511,14 +511,13 @@ Electronic Geometry Aircraft Design System (EGADS~\cite{haimes-drela-egads})
 is in progress, an ad-hoc procedure is used in this paper, that projects 
 new vertices onto an analytic surface as soon as they are created.
 
-Note that in the polar cube-cylinder case~{\color{red}\ref{TODO}}, snapping 
+Note that in the polar cube-cylinder case (see Section \ref{sec:cube-cylinder-polar-1}), snapping 
 to the surface required to initially prescribe a coarser metric (with $h_0 =0.1 $)
 and then to progressively bring it to the desired metric (by dividing 
 $h_0$ by two iteratively).
 
 
 \subsection{feflo.a}
-{\color{red} Adrien}
 
 Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}. The first step aims at improving the edges length distribution
 with respect to the input metric field. In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
@@ -527,16 +526,12 @@ and swaps of edge and faces of tetrahedra. Feflo.a can handle non-manifold surfa
 adaptation, a dedicated metric is used to control the deviation to the surface. The surface metric is then combined with the input computational metric.
 The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API.
 
-%
 More recently, the classical edge-based operators have been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
 to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
 of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
 
-
-
 \section{Results}
-{\color{red} Dan}
 
 For this publication, we focus on two local criteria of metric
 satisfaction.
@@ -981,6 +976,7 @@ elements that continue down to the lowest levels.
 \end{figure}
 
 \subsection{Polar Cube-Cylinder Case}
+\label{sec:cube-cylinder-polar-1}
 
 The second metric on the cube-cylinder geometry follows the surface
 of the cylinder, similar to a boundary layer.
