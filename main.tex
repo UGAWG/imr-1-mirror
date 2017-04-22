@@ -310,7 +310,7 @@ Turbulence Modeling Resource Website \cite{rumsey-smith-huang-turbmodels-descrip
 providing ready access to equations, grids, and flow solution details
 from previously verified codes as an aid to users
 who wish to verify their own implementations of models on
-relatively simple cases.''\cite{rumsey-smith-huang-turbmodels-description}
+relatively simple cases \cite{rumsey-smith-huang-turbmodels-description}.
 The goal of this work is to define a framework for
 rigorous examination of anisotropic grid adaptation methods
 that can guide the implementation and
@@ -318,7 +318,7 @@ further development and adoption of solution adaptive methods.
 
 \section{Benchmarks Site}
 
-A central repository for the UGAWG has been established on GitHub at https://github.com/UGAWG.
+A central repository for the UGAWG has been established on GitHub \cite{ugawg-website}.
 This site houses the data necessary to set up and run benchmark test cases along with results from various adaptation tools.
 The top level of the site is divided into adapt-benchmarks and adapt-results pages.
 The adapt-benchmarks section contains a collection of test cases that UGAWG members can use to evaluate meshing
@@ -328,6 +328,7 @@ These benchmark cases and the associated results provide the opportunity to eval
 compare and contrast meshing tools with other contemporary toolsets.
 
 \subsection{Geometry Models}
+
 The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.
 The benchmarks are organized by geometry model with a separate page available for each model.
 In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained.
@@ -339,14 +340,18 @@ This case provides the opportunity to evaluate the metric conformance without in
 By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.
 The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.
 This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.
-The geometry definition is provided in STEP{\color{red} [Reference]} and EGADS {\color{red} [Reference]} formats for remeshing tools that have an embedded geometry modeling kernel.
+The geometry definition is provided in STEP \cite{STEP-website} and 
+Electronic Geometry Aircraft Design System
+(EGADS \cite{haimes-drela-egads})
+formats for remeshing tools that have an embedded geometry modeling kernel.
 Due to the simple shape of this test case the geometry can alternatively be represented analytically.   
 
 \subsection{Metric Distribution}
+
 In addition to the geometry definition, each benchmark test case includes a prescribed mesh sizing distribution.
 The sizing distribution is provided in the form of analytically defined metric functions.
 Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.
-The first is a linear function with anisotropic stretching centered about the z=0.5 plane.
+The first is a linear function with anisotropic stretching centered about the $z=0.5$ plane.
 
 The linear metric field is described by
 
@@ -402,10 +407,10 @@ h_r &=& h0 + 2*(0.1-h0)*abs(r-0.5) \nonumber \\
 h0 &=& 0.001 \nonumber
 \end{eqnarray}
 
-In the above equations, t is in the theta direction and r is radial direction
+In the above equations, $t$ is in the $\theta$ direction and $r$ is the radial direction.
 
 This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.
-This metric distribution will be referred to as the Polar-1 distribution.   
+This metric distribution will be referred to as the Polar-1 distribution.
 
 A slight modification to the Polar-1 distribution is also utilized and is defined as 
 
@@ -430,22 +435,25 @@ The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metri
 This case is representative of attached shear layers commonly found in fluid flow problems.
 The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
 
-Evaluation criteria for the Cube-Cylinder test cases include metric conformance as measured by edge length relative to the prescribed Metric,
-{\color{red} should we or are we also mesuring distance of surface points from the prescribed geometry, element shape compared to the Metric, ...}.
+Evaluation criteria for all test cases is described in detail in Section \ref{sec:results} and includes metric conformance
+as measured by edge length relative to the prescribed metric (see Equation \ref{eq:length}),
+as well as an element quality measure in metric space (see Equation \ref{eq:quality}).
 
-Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation.
-{\color{red}[Is this what we all do, or should it go in code description sections ?]}
+Each participating code took slightly different approaches, and Section \ref{sec:codes} will
+describe these approaches in as much detail as is possible in this one paper.
 
 \subsection{Evaluation Framework}
 
-{\color {red} I have not followed the evaluation approach, so this section needs to be modified to be consistent with our approach}
-To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.
-The .meshb {\color{red}reference} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.
-Each mesh was read into the evaluation tool and compared against the analytic metric field.
-Statistical data in the form of {\color {red}?} was computed for each mesh and a distribution of edge lengths is plotted.
-A comparison and analysis of the resulting evaluation data is provided in the Results section. 
+To provide a consistent evaluation of meshes, a common set of tools was used to measure the metric conformance and other evaluation criteria on all meshes.
+The libMeshb \cite{libMeshb-website} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.
+Each mesh was read into the evaluation tools and compared against the analytic metric field.
+The tools produce three kinds of output: a rendering of the mesh using ParaView \cite{paraview-book},
+histograms of metric edge lengths and metric element qualities, and maximum/minimum length
+and quality values.
+A comparison and analysis of the resulting evaluation data is provided in Section \ref{sec:results}.
 
 \section{Participating Codes}
+\label{sec:codes}
 
 \subsection{EPIC}
 
@@ -480,9 +488,7 @@ A convex combination of these node location is chosen
 to yeild a new node location update the improves
 the element shape measure in the anisotropic
 metric \cite{alauzet-topology-moving-mesh}.
-Geometry is accessed through the
-Electronic Geometry Aircraft Design System
-(EGADS \cite{haimes-drela-egads})
+Geometry is accessed through EGADS
 application program interface.
 
 \subsection{Omega\_h}
@@ -522,11 +528,13 @@ For all results presented, the minimum quality threshold was set to 30\%
 
 \subsection{Pragmatic}
 
-Pragmatic~\cite{pragmatic-website,Gorman-2015} is an open source 2D and
+Pragmatic \cite{pragmatic-website,Gorman-2015} is an open source 2D and
 3D anisotropic remesher developed as a C++ library at Imperial College
-London.  Initially targeted at geophysical flow simulations, it now
+London.
+Initially targeted at geophysical flow simulations, it now
 aims at generating quality meshes for a wide range of numerical
-simulations. It has been integrated into the PETSc library~\cite{petsc-user-ref,Barral-2016}.
+simulations.
+It has been integrated into the PETSc library \cite{petsc-user-ref,Barral-2016}.
 
 The adapted mesh is obtained from the input mesh through a series of
 local mesh manipulations. Iterative applications of coarsening (edge collapse),
@@ -534,7 +542,7 @@ edge/face swapping and refinement (edge splitting) first optimise the
 resolution and the quality of the mesh, followed by a final
 quality-constrained Laplacian smoothing step that fine-tunes the mesh
 quality. The element internal quality function that is optimised is
-the functional defined in Vasilevskii \& Lipnikov~\cite{Vasilevskii-1999}.
+the functional defined in Vasilevskii \& Lipnikov \cite{Vasilevskii-1999}.
 
 Pragmatic was started as a hybrid threads and MPI parallel code. Since
 then, the enthusiasm for hybrid parallelisation has waned on the solvers side,
@@ -542,33 +550,39 @@ and hybridisation has been dropped in favor of a more classic purely
 distributed memory approach in Pragmatic. However, some initial design 
 choices were driven by this approach and still have an influence on the code. 
 
-Whereas adaptation of surfaces based on CAD representation using the
-Electronic Geometry Aircraft Design System (EGADS~\cite{haimes-drela-egads})
-is in progress, an ad-hoc procedure is used in this paper, that projects 
+Whereas adaptation of surfaces based on CAD representation using EGADS
+is in progress: an ad-hoc procedure is used in this paper that projects 
 new vertices onto an analytic surface as soon as they are created.
 
 Note that in the polar cube-cylinder case (see Section \ref{sec:cube-cylinder-polar-1}), snapping 
-to the surface required to initially prescribe a coarser metric (with $h_0 =0.1 $)
+to the surface required to initially prescribe a coarser metric (with $h_0 = 0.1$)
 and then to progressively bring it to the desired metric (by dividing 
 $h_0$ by two iteratively).
 
 
 \subsection{feflo.a}
 
-Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}. The first step aims at improving the edges length distribution
-with respect to the input metric field. In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
+Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}.
+The first step aims at improving the edges length distribution
+with respect to the input metric field.
+In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
 The second step is an optimisation procedure where we tend to improve the quality of the mesh by using mesh smoothing
-and swaps of edge and faces of tetrahedra. Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements. For the surface mesh
-adaptation, a dedicated metric is used to control the deviation to the surface. The surface metric is then combined with the input computational metric.
-The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API.
+and swaps of edge and faces of tetrahedra.
+Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements.
+For the surface mesh
+adaptation, a dedicated metric is used to control the deviation to the surface.
+The surface metric is then combined with the input computational metric.
+The new points created on the surface are projected to a (fine) background surface grid and/or by using a request to CAD through the EGADS API.
 
 More recently, the classical edge-based operators have been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}.
 The main of pros is to ease the code maintenance,
 to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
-of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
-and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
+of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.
+The cavity operator allows to combine advancing-point techniques
+and cavity-based insertion to produce metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
 
 \section{Results}
+\label{sec:results}
 
 For this publication, we focus on two local criteria of metric
 satisfaction.
@@ -1434,61 +1448,3 @@ as ideas for improvements or additions to the benchmark cases.
 \bibliographystyle{model1-num-names}
 
 \end{document}
-
-\clearpage
-
-%%%% This page is for instructions only, once the article is finalize please omit the below text before creating the final PDF
-\normalMode
-
-\section*{Instructions to Authors for LaTeX template:}
-
-\section{ZIP mode for LaTeX template:}
-
-The zip package is created as per the guide lines present on the URL http://www.elsevier.com/author-schemas/ preparing-crc-journal-articles-with-latex for creating the LaTeX zip file of Procedia LaTeX template.  The zip generally contains the following files:
-\begin{Itemize}[]\leftskip-17.7pt\labelsep3.3pt
-\item ecrc.sty
-\item  elsarticle.cls
-\item elsdoc.pdf
-\item .bst file
-\item Manuscript templates for use with these bibliographic styles
-\item  Generic and journal specific logos, etc.
-\end{Itemize}
-
-The LaTeX package is the main LaTeX template. All LaTeX support files are required for LaTeX pdf generation from the LaTeX template package.
-
-{\bf Reference style .bst file used for collaboration support:} In the LaTeX template packages of all Procedia titles a new ``.bst'' file is used which supports collaborations downloaded from the path http://www.elsevier.com/author-schemas/the-elsarticle-latex-document-class
-
-\section{Reference styles used in  Procedia master templates:}
-\let\footnotesize\normalsize
-\hspace*{-10pt}\begin{tabular*}{\hsize}{@{}ll@{}}
-{\bf Title}&{\bf Reference style} \\[6pt]
-AASPRO  & 2 Harvard\\
-AASRI Procedia  & 3 Vancouver Numbered\\
-APCBEE Procedia  & 3 Vancouver Numbered\\
-EGYPRO  & 3 Vancouver Numbered\\
-FINE    & 2 Harvard\\
-IERI Procedia  & 3 Vancouver Numbered\\
-MATPR  & 1a Numbered without article titles\\
-MSPRO  & 2 Harvard\\
-PHPRO  & 2 Harvard\\
-PIUTAM  & 3a Embellished Vancouver \\
-Procedia CIRP  & 3 Vancouver Numbered\\
-PROCHE  & 3a Embellished Vancouver \\
-PROCS  & 3a Embellished Vancouver \\
-PROENG  & 1 Numbered\\
-PROENV  & 3a Embellished Vancouver \\
-PROEPS  & 3a Embellished Vancouver \\
-PROFOO    & 3a Embellished Vancouver \\
-PROMFG  & 1a Numbered without article titles\\
-PROTCY  & 3 Vancouver Numbered\\
-PROVAC  & 3a Embellished Vancouver \\
-SBSPRO  & 5 APA\\
-SEPRO  & 3a Embellished Vancouver \\
-AQPRO & 2 Harvard\\
-UMKPRO & 5 APA\\
-\end{tabular*}
-
-\end{document}
-
-%%
-%% End of file `procs-template.tex'.
