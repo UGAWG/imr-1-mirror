@@ -318,13 +318,35 @@ further development and adoption of solution adaptive methods.
 
 \section{Benchmarks Site}
 
-A central repository for the UGAWG has been established on GitHub at https://github.com/UGAWG.   This site houses the data necessary to set up and run benchmark test cases along with results from various adaptation tools.  The top level of the site is divided into adapt-benchmarks and adapt-results pages.  The adapt-benchmarks section contains a collection of test cases that UGAWG members can use to evaluate meshing tools and includes geometry definitions, initial meshes and metric fields for each case.  The adapt-results section contains results generated and uploaded by various UGAWG participants for several different meshing tools.  These benchmark cases and the associated results provide the opportunity to evaluate, compare and contrast meshing tools with other contemporary toolsets.
+A central repository for the UGAWG has been established on GitHub at https://github.com/UGAWG.
+This site houses the data necessary to set up and run benchmark test cases along with results from various adaptation tools.
+The top level of the site is divided into adapt-benchmarks and adapt-results pages.
+The adapt-benchmarks section contains a collection of test cases that UGAWG members can use to evaluate meshing
+tools and includes geometry definitions, initial meshes and metric fields for each case.
+The adapt-results section contains results generated and uploaded by various UGAWG participants for several different meshing tools.
+These benchmark cases and the associated results provide the opportunity to evaluate,
+compare and contrast meshing tools with other contemporary toolsets.
 
 \subsection{Geometry Models}
-The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.   The benchmarks are organized by geometry model with a separate page available for each model.      In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained. {\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}  The benchmarks section currently contains two geometry models.  The geometry for the first benchmark case is represented by a unit Cube.   This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.   This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.    By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.  The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.  This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.   The geometry definition is provided in STEP{\color{red} [Reference]} and EGADS {\color{red} [Reference]} formats for remeshing tools that have an embedded geometry modeling kernel.   Due to the simple shape of this test case the geometry can alternatively be represented analytically.   
+The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.
+The benchmarks are organized by geometry model with a separate page available for each model.
+In addition to the geometry models, the adapt-benchmarks section contains a page where meeting notes from UGAWG meetings are maintained.
+{\color{red}[should the meeting notes be moved to the top level?  Maybe we create a Documents section at the top level and move the meeting nodes, past papers, user guides, etc into this section. ]}
+The benchmarks section currently contains two geometry models.
+The geometry for the first benchmark case is represented by a unit Cube.
+This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.
+This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.
+By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.
+The second geometry model consists of a unit cube intersected by a Cylinder of radius 0.5 oriented along the z axis positioned at x=0, y=0.
+This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.
+The geometry definition is provided in STEP{\color{red} [Reference]} and EGADS {\color{red} [Reference]} formats for remeshing tools that have an embedded geometry modeling kernel.
+Due to the simple shape of this test case the geometry can alternatively be represented analytically.   
 
 \subsection{Metric Distribution}
-In addition to the geometry definition, each benchmark test case includes a prescribed mesh sizing distribution.  The sizing distribution is provided in the form of analytically defined metric functions.   Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.  The first is a linear function with anisotropic stretching centered about the z=0.5 plane.
+In addition to the geometry definition, each benchmark test case includes a prescribed mesh sizing distribution.
+The sizing distribution is provided in the form of analytically defined metric functions.
+Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.
+The first is a linear function with anisotropic stretching centered about the z=0.5 plane.
 
 The linear metric field is described by
 
@@ -382,7 +404,8 @@ h0 &=& 0.001 \nonumber
 
 In the above equations, t is in the theta direction and r is radial direction
 
-This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.  This metric distribution will be referred to as the Polar-1 distribution.   
+This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.
+This metric distribution will be referred to as the Polar-1 distribution.   
 
 A slight modification to the Polar-1 distribution is also utilized and is defined as 
 
@@ -394,22 +417,35 @@ h_t &=& (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
 This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be referred to as the Polar-2 distribution.
 
 \subsection{Test Cases}
-Three benchmark test cases have been defined for this paper.  The first case consists of the Cube geometry with the Linear-1 metric distribution.   This baseline benchmark tests the ability of a meshing tool to build a mesh that conforms to a metric distribution in the absence of geometry or metric curvature.  Metric conformance is measured by comparing the edge lengths of the resulting mesh with the prescribed metric distribution.  An effective anisotropic meshing tool should be able to perform this benchmark on par with other meshing tools.  Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
 
-The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.  The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.  The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.  This case is representative of attached shear layers commonly found in fluid flow problems.  The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
+Three benchmark test cases have been defined for this paper.
+The first case consists of the Cube geometry with the Linear-1 metric distribution.
+This baseline benchmark tests the ability of a meshing tool to build a mesh that conforms to a metric distribution in the absence of geometry or metric curvature.
+Metric conformance is measured by comparing the edge lengths of the resulting mesh with the prescribed metric distribution.
+An effective anisotropic meshing tool should be able to perform this benchmark on par with other meshing tools.
+Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
+The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.
+The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.
+The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.
+This case is representative of attached shear layers commonly found in fluid flow problems.
+The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
 
-Evaluation criteria for the Cube-Cylinder test cases include metric conformance as measured by edge length relative to the prescribed Metric,{\color{red} should we or are we also mesuring distance of surface points from the prescribed geometry, element shape compared to the Metric, ...}.
+Evaluation criteria for the Cube-Cylinder test cases include metric conformance as measured by edge length relative to the prescribed Metric,
+{\color{red} should we or are we also mesuring distance of surface points from the prescribed geometry, element shape compared to the Metric, ...}.
 
-Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation. {\color{red}[Is this what we all do, or should it go in code description sections ?]}
+Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop adaptation.
+{\color{red}[Is this what we all do, or should it go in code description sections ?]}
 
 \subsection{Evaluation Framework}
 
 {\color {red} I have not followed the evaluation approach, so this section needs to be modified to be consistent with our approach}
-To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.   The .meshb {\color{red}reference} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.  Each mesh was read into the evaluation tool and compared against the analytic metric field.   Statistical data in the form of {\color {red}?} was computed for each mesh and a distribution of edge lengths is plotted.   A comparison and analysis of the resulting evaluation data is provided in the Results section. 
-
+To provide a consistent evaluation of meshes, a common tool was used to measure the metric conformance and other evaluation criteria on all meshes.
+The .meshb {\color{red}reference} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.
+Each mesh was read into the evaluation tool and compared against the analytic metric field.
+Statistical data in the form of {\color {red}?} was computed for each mesh and a distribution of edge lengths is plotted.
+A comparison and analysis of the resulting evaluation data is provided in the Results section. 
 
 \section{Participating Codes}
-{\color{red} Everyone}
 
 \subsection{EPIC}
 
@@ -526,7 +562,8 @@ and swaps of edge and faces of tetrahedra. Feflo.a can handle non-manifold surfa
 adaptation, a dedicated metric is used to control the deviation to the surface. The surface metric is then combined with the input computational metric.
 The new points created on the surface are projected to a  (fine) background surface grid and/or by using  a request to CAD through the EGADS API.
 
-More recently, the classical edge-based operators have been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}. The main of pros is to ease the code maintenance,
+More recently, the classical edge-based operators have been replaced by a unique cavity-based operator \cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}.
+The main of pros is to ease the code maintenance,
 to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
 of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.  The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce  metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
@@ -1311,17 +1348,21 @@ on minimum attainable quality but on the qualities of elements all throughout th
 Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries \cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}.
 Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
 the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy. We generally decompose this process
-into 3 main steps:  (1) error estimation (2) mesh generation and (3) solution computation.
+into three main steps:  (1) error estimation, (2) mesh generation, and (3) solution computation.
 %One benefit of unstructured mesh adaptation is its ability to adapt to complex geometries as typically  found in aeronautic applications for instance:  landing gear, high lift configurations. Several
 %algorithms to generate anisotropic meshes  with complex geometries exist.  We mention:  (i) edge-based, (iii) cavity-based or
 % (iv) advancing-point-based.  For the flow solver, we consider second order turbulent flow solver.
 %
- However, the full benefit of adaptivity is then achieved only when (1)-(2)-(3) are optimally combined.
+However, the full benefit of adaptivity is then achieved only when (1), (2), and (3) are optimally combined.
 This first set of benchmark focus on metric-conformity with respect to an analytical prescribed
-metric on simple geometry.  We list in the following the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
+metric on simple geometry.
+We list in the following the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
 
-\paragraph{Surface mesh adaptation}   Surface mesh adaptation becomes critical when an initial  mesh is used as in local remeshing approach.
-This even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and needs to be modified. Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
+\paragraph{Surface mesh adaptation}
+
+Surface mesh adaptation becomes critical when an initial  mesh is used as in local remeshing approach.
+This even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and needs to be modified.
+Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
 %of negative invalid element.  The necessary level of discretisation
 %on the surface is currently never reached in the current best practice grids.
 This high level of anisotropy has to be then correctly blended
@@ -1335,34 +1376,42 @@ and the level of anisotropy.
 %\item point-frontal and cavity-based algorithms.
 %\end{itemize}
 
+\paragraph{CAD integration}
 
-\paragraph{CAD integration} For industrial applications, the use of CAD data is crucial as many quantities of interest
+For industrial applications, the use of CAD data is crucial as many quantities of interest
 depends on the geometry. Providing high quality surface mesh becomes a mandatory feature.
 We intend to define simple test cases featuring one typical CAD issue at a time: missing topology,  CAD tolerances of edges larger than required mesh sizes,
 bad quality parametrisation.
 
+\paragraph{Adaptive boundary layer}
 
-\paragraph{Adaptive boundary layer} The generation of a boundary layer mesh is generally designed for isotropic surface grids,
-and is generated only once \cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}. Consequently, it is necessary to keep the boundary layer frozen while adapting
-the outer part of the domain \cite{park-carlson-turbulent-output-adapt-aiaa}. However, this strategy is un-praticable  when the boundary layer
-interacts when other anisotropic features. It is then necessary to design and assess algorithm that are well suited to quickly generate boundary layer mesh
+The generation of a boundary layer mesh is generally designed for isotropic surface grids,
+and is generated only once \cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}.
+Consequently, it is necessary to keep the boundary layer frozen while adapting
+the outer part of the domain \cite{park-carlson-turbulent-output-adapt-aiaa}.
+However, this strategy is unpracticable when the boundary layer
+interacts when other anisotropic features.
+It is then necessary to design and assess algorithm that are well suited to quickly generate boundary layer mesh
 in the presence of anisotropic surface mesh. Several test cases will be designed:
 (i) analytical boundary layer metric, and then (ii) computational boundary layer metric.
 
+\paragraph{Parallel environment}
 
-\paragraph{Parallel environment} Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied. We intend to re-visit all the data base test cases in a parallel environment. In particular,
-we can discuss the quality of the generated parallel grids with respect to the sequential one, and also assess the gain of the parallel mesh generation (for
-surface and volume).
+Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied.
+We intend to re-visit all the data base test cases in a parallel environment.
+In particular,
+we can discuss the quality of the generated parallel grids with respect to the sequential one,
+and also assess the gain of the parallel mesh generation (for surface and volume).
 
 In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metric
-following the discussion of \cite{park-unstruct-adapt-status-cfd2030}. We will apply the same approach as in the preliminary study \cite{park-loseille-krakos-michal-adapt-decomposition},
+following the discussion of \cite{park-unstruct-adapt-status-cfd2030}.
+We will apply the same approach as in the preliminary study \cite{park-loseille-krakos-michal-adapt-decomposition},
 where only one component is modified (for instance, the error estimate) while the remaining
 components are kept unchanged (flow solver, mesh generation algorithm).
 
-
 \section{Conclusion}
 
-As the first creation of the Unstructured Grid Adaptation Working Group, these benchmark cases have uncovered
+As the first creation of the Unstructured Grid Adaptation Working Group, these benchmark cases have revealed
 a surprising number of useful insights both into the qualities of participating codes and the
 nature of mesh adaptation in general.
 Most notably, the polar metric illustrates how metric gradation can make the metric difficult to satisfy,
