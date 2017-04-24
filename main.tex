@@ -38,6 +38,7 @@
 \usepackage{color}
 \usepackage{subcaption}
 
+
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
 \usepackage{amsmath}
@@ -358,17 +359,10 @@ M = \begin{bmatrix}
 h_x^2 & 0 & 0 \\
 0 & h_y^{-2} & 0 \\
 0 & 0 & h_z^{-2} 
-\end{bmatrix}
+\end{bmatrix} \,,
 \end{equation}
-
 where
-
-\begin{eqnarray}
-h_x &=& 0.1 \nonumber \\
-h_y &=& 0.1 \nonumber \\
-h_0 &=& 0.001 \nonumber \\
-h_z &=& h_0 + 2*(0.1-h_0)*|z-0.5| \nonumber \,.
-\end{eqnarray}
+$h_x = 0.1,\; h_y = 0.1,\; h_0 = 0.001 \textrm{\; and\; } h_z = h_0 + 2 (0.1-h_0) |z-0.5|\,.$
 
 This metric field is representative of a shear layer in the absence of curvature and will be referred to as the Linear-1 distribution.  
 
@@ -391,28 +385,26 @@ h_r^{-2} &  0  &    0   \\
 \cos(t) & \sin(t) &  0  \\
 -\sin(t) & \cos(t) &  0  \\
 0  &     0  &    1
-\end {bmatrix}
+\end {bmatrix} \,,
 \end{equation}
 where
-\begin{eqnarray}
-r_{\ } &=& \sqrt{x^2+y^2} \nonumber \\
-t_{\ } &=& \textrm{atan2}(y,x) \nonumber \\
-h_z &=& 0.1 \nonumber \\
-h_t &=& 0.1 \nonumber \\
-h_0 &=& 0.001 \nonumber \\
-h_r &=& h_0 + 2*(0.1-h_0)*\left|r-0.5\right| \nonumber \,.
-\end{eqnarray}
+$r = \sqrt{x^2+y^2},\; t = \textrm{atan2}(y,x),\; h_z = h_t = 0.1,\; h_0 = 0.001\textrm{\; and\; } h_r = h_0 + 2 (0.1-h_0) \left|r-0.5\right| \,. $
+
 
 In the above equations, $t$ is in the $\theta$ direction and $r$ is the radial direction.
 This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.
 This metric distribution will be referred to as the Polar-1 distribution.
 
 A slight modification to the Polar-1 distribution is also utilized and is defined as:
-
-\begin{eqnarray}
-d &=& |0.6 - r| * 10 \\
-h_t &=& (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
-\end{eqnarray}
+\begin{equation}
+  d = 10 \left|0.6 - r\right|, \textrm{\quad and \quad} h_t =  
+  \left\{ 
+  \begin{aligned}
+  0.1  \textrm{\; if \;} &d < 0 \\
+  d / 40 + 0.1 (1 - d)   \textrm{\; if \;}& d \leq 0
+  \end{aligned}
+  \right.
+\end{equation}
 
 This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be referred to as the Polar-2 distribution.
 
@@ -1245,7 +1237,6 @@ on minimum attainable quality but on the qualities of elements all throughout th
 \label{fig:cube-cylinder-polar-2-qualities}
 \end{figure}
 
-{\color{blue} Why not length histo for this case ?}
 
 \section{Future Directions}
 
@@ -1262,8 +1253,7 @@ This first set of benchmarks focus on metric-conformity with respect to an analy
 metric on a simple geometry.
 We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
 
-\paragraph{Surface mesh adaptation}
-
+\emph{Surface mesh adaptation.\;}
 Surface mesh adaptation becomes critical when an initial mesh is used as in the local remeshing approach.
 This is even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and need to be modified.
 Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
@@ -1281,15 +1271,13 @@ and the level of anisotropy.
 %\item point-frontal and cavity-based algorithms.
 %\end{itemize}
 
-\paragraph{CAD integration}
-
+\emph{CAD integration.\;}
 For industrial applications, the use of CAD data is crucial as many quantities of interest
 depends on the geometry. Providing high quality surface mesh becomes a mandatory feature.
 We intend to define simple test cases featuring one typical CAD issue at a time: missing topology,  CAD tolerance to edges larger than the required mesh size,
 bad quality parametrisation.
 
-\paragraph{Adaptive boundary layer}
-
+\emph{Adaptive boundary layer.\;}
 The generation of a boundary layer mesh is generally designed for isotropic surface grids,
 and is generated only once \cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}.
 Consequently, it is necessary to keep the boundary layer frozen while adapting
@@ -1298,10 +1286,9 @@ However, this strategy is unpracticable when the boundary layer
 interacts when other anisotropic features.
 It is then necessary to design and assess algorithms that are well suited to quickly generate boundary layer meshes
 in the presence of anisotropic surface meshes. Several test cases will be designed:
-(i) analytical boundary layer metric, and then (ii) computational boundary layer metric.
+(i) analytical boundary layer metric, and then (ii) computational boundary layer metric. 
 
-\paragraph{Parallel environment}
-
+\emph{Parallel environment.\;}
 Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinement techniques needs to be studied.
 We intend to re-visit all the data base test cases in a parallel environment.
 In particular,
