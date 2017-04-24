@@ -395,12 +395,12 @@ h_r^{-2} &  0  &    0   \\
 \end{equation}
 where
 \begin{eqnarray}
-r &=& \sqrt{x^2+y^2} \nonumber \\
-t &=& \textrm{atan2}(y,x) \nonumber \\
+r_{\ } &=& \sqrt{x^2+y^2} \nonumber \\
+t_{\ } &=& \textrm{atan2}(y,x) \nonumber \\
 h_z &=& 0.1 \nonumber \\
 h_t &=& 0.1 \nonumber \\
 h_0 &=& 0.001 \nonumber \\
-h_r &=& h_0 + 2*(0.1-h_0)*|r-0.5| \nonumber \,.
+h_r &=& h_0 + 2*(0.1-h_0)*\left|r-0.5\right| \nonumber \,.
 \end{eqnarray}
 
 In the above equations, $t$ is in the $\theta$ direction and $r$ is the radial direction.
