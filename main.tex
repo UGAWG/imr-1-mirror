@@ -181,7 +181,7 @@
 \begin{abstract}
 %% Text of abstract
 The Unstructured Grid Adaptation Working Group is an open gathering of researchers
-working on adapting tetrahedral and triangle meshes to conform to a metric field.
+working on adapting simplicial meshes to conform to a metric field.
 Current members span a wide range of institutions including academia,
 industry, and national laboratories.
 The purpose of this group is to create a common basis for understanding and
@@ -240,7 +240,7 @@ the impacts improved capability would have on
 aerospace analysis and design.
 This focus on unstructured grid adaptation
 is provided in the broader context of the
-CFD Vision 2030 Study by Slotnick et al. \cite{cfd-vision-2030}
+CFD Vision 2030 Study by Slotnick et al. \cite{cfd-vision-2030}.
 The Vision Study provides a number of case studies
 to illustrate the current state of CFD capability and capacity and the
 potential impact of emerging High Performance Computing (HPC)
@@ -335,7 +335,7 @@ The geometry for the first benchmark case is represented by a unit cube.
 This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.
 This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.
 By removing geometry projection issues, this test case can easily be completed by most adaptive remeshing tools providing a common baseline for comparison.
-The second geometry model consists subtracts from the unit cube a cylinder of radius 0.5 oriented along the z axis positioned at $x=0$, $y=0$.
+The second geometry model subtracts from the unit cube a cylinder of radius 0.5 oriented along the z axis positioned at $x=0$, $y=0$.
 This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.
 The geometry definition is provided in STEP and 
 Electronic Geometry Aircraft Design System
@@ -350,7 +350,7 @@ The sizing distribution is provided in the form of analytically defined metric f
 Three metric distributions have been defined that represent anisotropic features commonly found in computational analysis problems.
 The first is a linear function with anisotropic stretching centered about the $z=0.5$ plane.
 
-The linear metric field is described by
+The linear metric field is described by:
 
 \begin{equation}
 \label{eq:Linear1}
@@ -366,19 +366,20 @@ where
 \begin{eqnarray}
 h_x &=& 0.1 \nonumber \\
 h_y &=& 0.1 \nonumber \\
-h_z &=& h0 + 2*(0.1-h0)*abs(z-0.5) \nonumber \\
-h0 &=& 0.001 \nonumber
+h_0 &=& 0.001 \nonumber \\
+h_z &=& h_0 + 2*(0.1-h_0)*|z-0.5| \nonumber \,.
 \end{eqnarray}
 
 This metric field is representative of a shear layer in the absence of curvature and will be referred to as the Linear-1 distribution.  
 
-The second metric field is described by 
+The second metric field is described by: 
 
 \begin{equation}
+\label{eq:Polar1}
 M = 
 \begin{bmatrix}
-cos(t) & -sin(t) & 0 \\ 
-sin(t) & cos(t) &  0 \\ 
+\cos(t) & -\sin(t) & 0 \\ 
+\sin(t) & \cos(t) &  0 \\ 
 0   &    0   &  1 
 \end {bmatrix}
 \begin{bmatrix}
@@ -387,32 +388,29 @@ h_r^{-2} &  0  &    0   \\
 0 &   0  &  h_z^{-2} 
 \end {bmatrix}
 \begin{bmatrix}
-cos(t) & sin(t) &  0  \\
--sin(t) & cos(t) &  0  \\
+\cos(t) & \sin(t) &  0  \\
+-\sin(t) & \cos(t) &  0  \\
 0  &     0  &    1
 \end {bmatrix}
 \end{equation}
-
 where
-
 \begin{eqnarray}
-r &=& sqrt(x^2+y^2) \nonumber \\
-t &=& atan2(y,x) \nonumber \\
+r &=& \sqrt{x^2+y^2} \nonumber \\
+t &=& \textrm{atan2}(y,x) \nonumber \\
 h_z &=& 0.1 \nonumber \\
 h_t &=& 0.1 \nonumber \\
-h_r &=& h0 + 2*(0.1-h0)*abs(r-0.5) \nonumber \\
-h0 &=& 0.001 \nonumber
+h_0 &=& 0.001 \nonumber \\
+h_r &=& h_0 + 2*(0.1-h_0)*|r-0.5| \nonumber \,.
 \end{eqnarray}
 
 In the above equations, $t$ is in the $\theta$ direction and $r$ is the radial direction.
-
 This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.
 This metric distribution will be referred to as the Polar-1 distribution.
 
-A slight modification to the Polar-1 distribution is also utilized and is defined as 
+A slight modification to the Polar-1 distribution is also utilized and is defined as:
 
 \begin{eqnarray}
-d &=& abs(0.6 - r) * 10 \\
+d &=& |0.6 - r| * 10 \\
 h_t &=& (d < 0) ? (0.1) : (d * (1 / 40) + (1 - d) * 0.1)
 \end{eqnarray}
 
@@ -428,7 +426,7 @@ An effective anisotropic meshing tool should be able to perform this benchmark o
 Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
 The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.
 The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.
-The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry in the presence of a geometry aligned highly anisotropic Metric field.
+The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore {\color{blue}the interaction between curved geometry in the presence of a geometry aligned highly anisotropic metric field}.
 This case is representative of attached shear layers commonly found in fluid flow problems.
 The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
 
@@ -442,7 +440,7 @@ describe these approaches in as much detail as is possible in this one paper.
 \subsection{Evaluation Framework}
 
 To provide a consistent evaluation of meshes, a common set of tools was used to measure the metric conformance and other evaluation criteria on all meshes.
-The libMeshb \cite{libMeshb-website} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool.
+The libMeshb \cite{libMeshb-website} format was chosen as the common file format for transferring mesh data between the meshers and the mesh evaluation tool {\color{blue}What are these evaluation tools ??}.
 Each mesh was read into the evaluation tools and compared against the analytic metric field.
 The tools produce three kinds of output: a rendering of the mesh using ParaView \cite{paraview-book},
 histograms of metric edge lengths and metric element qualities, and maximum/minimum length
@@ -469,6 +467,7 @@ insertion, collapse, swap, and node movement (EPIC-ICSM).
 
 \subsection{refine}
 
+{\color{blue}Say it's a NASA code ?}
 Adaptive grids results from two versions of the refine tool are presented.
 They both are designed to produce a
 unit mesh \cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
@@ -540,7 +539,6 @@ resolution and the quality of the mesh, followed by a final
 quality-constrained Laplacian smoothing step that fine-tunes the mesh
 quality. The element internal quality function that is optimised is
 the functional defined in Vasilevskii \& Lipnikov \cite{Vasilevskii-1999}.
-
 Pragmatic was started as a hybrid threads and MPI parallel code. Since
 then, the enthusiasm for hybrid parallelisation has waned on the solvers side,
 and hybridisation has been dropped in favor of a more classic purely 
@@ -548,10 +546,9 @@ distributed memory approach in Pragmatic. However, some initial design
 choices were driven by this approach and still have an influence on the code. 
 
 Whereas adaptation of surfaces based on CAD representation using EGADS
-is in progress: an ad-hoc procedure is used in this paper that projects 
+is in progress, an ad-hoc procedure is used in this paper that projects 
 new vertices onto an analytic surface as soon as they are created.
-
-Note that in the polar cube-cylinder case (see Section \ref{sec:cube-cylinder-polar-1}), snapping 
+Note that in the polar cube-cylinder case (see Equation ~\ref{eq:Polar1}), snapping 
 to the surface required to initially prescribe a coarser metric (with $h_0 = 0.1$)
 and then to progressively bring it to the desired metric (by dividing 
 $h_0$ by two iteratively).
@@ -559,6 +556,7 @@ $h_0$ by two iteratively).
 
 \subsection{feflo.a}
 
+{\color{blue}Say it's a zInria code ?}
 Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}.
 The first step aims at improving the edges length distribution
 with respect to the input metric field.
@@ -578,8 +576,15 @@ of boundary layer grids \cite{loseille-lohner-imr21-robust-bl-gen}.
 The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
 
+{\color{blue}\subsection{adaptive process} 
+Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop...\\
+Is that even true for everyone ? }
+
+
 \section{Results}
 \label{sec:results}
+
+{\color{blue} coherence Polar-1 and -2  vs polar and modified polar}
 
 For this publication, we use two local criteria of metric satisfaction.
 First, we measure the edge-length criterion as presented
@@ -1240,6 +1245,8 @@ on minimum attainable quality but on the qualities of elements all throughout th
 \label{fig:cube-cylinder-polar-2-qualities}
 \end{figure}
 
+{\color{blue} Why not length histo for this case ?}
+
 \section{Future Directions}
 
 Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries \cite{park-carlson-turbulent-output-adapt-aiaa,michal-krakos-aniso-adapt-edge}.
@@ -1251,22 +1258,23 @@ into three main steps:  (1) error estimation, (2) mesh generation, and (3) solut
 % (iv) advancing-point-based.  For the flow solver, we consider second order turbulent flow solver.
 %
 However, the full benefit of adaptivity is then achieved only when (1), (2), and (3) are optimally combined.
-This first set of benchmark focus on metric-conformity with respect to an analytical prescribed
-metric on simple geometry.
-We list in the following the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
+This first set of benchmarks focus on metric-conformity with respect to an analytical prescribed
+metric on a simple geometry.
+We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
 
 \paragraph{Surface mesh adaptation}
 
-Surface mesh adaptation becomes critical when an initial  mesh is used as in local remeshing approach.
-This even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and needs to be modified.
+Surface mesh adaptation becomes critical when an initial mesh is used as in the local remeshing approach.
+This is even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and need to be modified.
 Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
-%of negative invalid element.  The necessary level of discretisation
+{\color{blue}of negative invalid element}.  
+%The necessary level of discretisation
 %on the surface is currently never reached in the current best practice grids.
 This high level of anisotropy has to be then correctly blended
-which the  surface approximation estimate in order to do not create numerical artefacts on the geometry.
-The quality, level of anisotropy, robustness and cpu time need to be assessed  for the  algorithms described in this paper.
-We intend to provide test cases  starting from more complex initial meshes and with a  very high level of anisotropy
-near the surface. This will allows to assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
+with the  surface approximation estimate in order not to create numerical artefacts on the geometry.
+The quality, level of anisotropy, robustness and CPU time need to be assessed  for the  algorithms described in this paper.
+We intend to provide test cases  starting from more complex initial meshes and with a very high level of anisotropy
+near the surface. This will make it possible to assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
 and the level of anisotropy.
 %\begin{itemize}
 %\item edge-based operators with standard optimizations (smoothing, face-edge swaps)
@@ -1277,7 +1285,7 @@ and the level of anisotropy.
 
 For industrial applications, the use of CAD data is crucial as many quantities of interest
 depends on the geometry. Providing high quality surface mesh becomes a mandatory feature.
-We intend to define simple test cases featuring one typical CAD issue at a time: missing topology,  CAD tolerances of edges larger than required mesh sizes,
+We intend to define simple test cases featuring one typical CAD issue at a time: missing topology,  CAD tolerance to edges larger than the required mesh size,
 bad quality parametrisation.
 
 \paragraph{Adaptive boundary layer}
@@ -1288,19 +1296,19 @@ Consequently, it is necessary to keep the boundary layer frozen while adapting
 the outer part of the domain \cite{park-carlson-turbulent-output-adapt-aiaa}.
 However, this strategy is unpracticable when the boundary layer
 interacts when other anisotropic features.
-It is then necessary to design and assess algorithm that are well suited to quickly generate boundary layer mesh
-in the presence of anisotropic surface mesh. Several test cases will be designed:
+It is then necessary to design and assess algorithms that are well suited to quickly generate boundary layer meshes
+in the presence of anisotropic surface meshes. Several test cases will be designed:
 (i) analytical boundary layer metric, and then (ii) computational boundary layer metric.
 
 \paragraph{Parallel environment}
 
-Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinements techniques needs to be studied.
+Finally, the (potential) integration into an HPC environment \cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinement techniques needs to be studied.
 We intend to re-visit all the data base test cases in a parallel environment.
 In particular,
 we can discuss the quality of the generated parallel grids with respect to the sequential one,
 and also assess the gain of the parallel mesh generation (for surface and volume).
 
-In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metric
+In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metrics
 following the discussion of \cite{park-unstruct-adapt-status-cfd2030}.
 We will apply the same approach as in the preliminary study \cite{park-loseille-krakos-michal-adapt-decomposition},
 where only one component is modified (for instance, the error estimate) while the remaining
