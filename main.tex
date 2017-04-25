@@ -420,7 +420,6 @@ A slight modification to the Polar-1 distribution is also utilized and is define
   \end{aligned}
   \right.
 \end{equation}
-
 This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be referred to as the Polar-2 distribution.
 
 \subsection{Test Cases}
@@ -433,16 +432,15 @@ An effective anisotropic meshing tool should be able to perform this benchmark o
 Poor levels of metric conformance could indicate a fundamental problem with the implementation of the meshing operators and should be investigated before moving onto the other benchmark cases.
 The remaining benchmark cases combine the Cube-Cylinder geometry model and the Linear-1, Polar-1 and Polar-2 Metric distributions.
 The Cube-Cylinder with Linear-1 Metric introduces geometry curvature away from the presence of a highly anisotropic metric field and is a good measure of a meshing tools geometry preservation capability.
-The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore {\color{blue}the interaction between curved geometry in the presence of a geometry aligned highly anisotropic metric field}.
+The next benchmark cases consisting of the Cube-Cylinder model and Polar-1 Metric begins to explore the interaction between curved geometry and a highly anisotropic geometry aligned metric field.
 This case is representative of attached shear layers commonly found in fluid flow problems.
-The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh.  
+The final benchmark consisting of the Cube-Cylinder and Polar-2 Metric distribution is similar to the objectives of the previous benchmark but is easier to achieve higher quality elements in the adapted mesh due to less aggressive gradation.  
 
 Evaluation criteria for all test cases is described in detail in Section \ref{sec:results} and includes metric conformance
 as measured by edge length relative to the prescribed metric (see Equation \ref{eq:length}),
 as well as an element quality measure in metric space (see Equation \ref{eq:quality}).
-
 Each participating code took slightly different approaches, and Section \ref{sec:codes} will
-describe these approaches in as much detail as is possible in this one paper.
+describe these approaches in as much detail as is possible within article length constraints.
 
 \subsection{Evaluation Framework}
 
