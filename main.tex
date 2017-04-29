@@ -199,7 +199,7 @@ We also present the results of several existing codes on these benchmark
 cases, to illustrate their utility in identifying key challenges common
 to all codes and important differences between available codes.
 {\color{blue} Mike: ...a proposal is put in place to expand this benchmark to
-mature the technology nessisary to impact practial simulation workflows.}
+mature the technology necessary to impact practical simulation workflows.}
 \end{abstract}
 
 \begin{keyword}
@@ -291,7 +291,7 @@ mechanics.
 Extensions of the benchmarks are envisioned that examine error
 estimation, which will continue as an acute need for
 efficiency and robustness of grid adaptation.
-An example of this accute need is that
+An example of this acute need is that
 Michal et al. \cite{michal-unstruct-adapt-epic-dpw6} show that
 the lack of a reliable error estimate can reduce the efficiency of advanced
 automated anisotropic grid adaptation methods.
@@ -332,7 +332,7 @@ The \emph{adapt-benchmarks} section contains a collection of test cases that UGA
 tools and includes geometry definitions, initial meshes and metric fields for each case.
 The \emph{adapt-results} section contains results generated and uploaded by various UGAWG participants using several different meshing tools.
 These benchmark cases and the associated results provide the opportunity to evaluate,
-compare and contrast meshing tools with other contemporary toolsets.
+compare and contrast meshing tools with other contemporary tool sets.
 The Git version control system and the GitHub website have have become
 vehicles for collaboratively contributing to open source software
 projects.
@@ -342,20 +342,20 @@ and encourage new entry into unstructured grid adaptation research.
 
 \subsection{Geometry Models}
 
-The adapt-benchmarks section of the respository is organized such that new benchmark cases can easily be added.
+The adapt-benchmarks section of the repository is organized such that new benchmark cases can easily be added.
 The benchmarks are organized by geometry model with a separate page available for each model.
 The benchmarks section currently contains two geometry models.
 The geometry for the first benchmark case is represented by a unit cube.
 This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.
 This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.
-By removing geometry projection issues, this cube test case can easily be completed by most adaptive remeshing tools,
+By removing geometry projection issues, this cube test case can easily be completed by most adaptive re-meshing tools,
 which provides a common baseline for comparison.
 The second geometry model subtracts from the unit cube a cylinder of radius 0.5 oriented along the z axis positioned at $x=0$, $y=0$.
-This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneusly maintaining the geometry shape.
+This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneously maintaining the geometry shape.
 The geometry definition is provided in STEP and 
 Electronic Geometry Aircraft Design System
 (EGADS \cite{haimes-drela-egads})
-formats for remeshing tools that have an embedded geometry modeling kernel.
+formats for re-meshing tools that have an embedded geometry modeling kernel.
 Due to the simple shape of this test case the geometry can alternatively be represented analytically.   
 
 \subsection{Metric Distribution}
@@ -476,16 +476,16 @@ The refine software package is developed and distributed by NASA.
 Both version are designed to produce a
 unit mesh \cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
 in a provided metric field.
-The origial version, refine/one, is documented
+The original version, refine/one, is documented
 by Park and Darmofal \cite{park-darmofal-parallel-aniso-adapt-aiaa}.
 The current version under development, refine/two,
 utilizes the combination of edge split and collapse operations
 proposed by Michal and Krakos \cite{michal-krakos-aniso-adapt-edge}.
-Node relocation is performed to improve adjecent element quality.
+Node relocation is performed to improve adjacent element quality.
 A new ideal node location of the node is created
 for each adjacent element.
 A convex combination of these node location is chosen
-to yeild a new node location update the improves
+to yield a new node location update the improves
 the element shape measure in the anisotropic
 metric \cite{alauzet-topology-moving-mesh}.
 Geometry is accessed through EGADS
@@ -529,7 +529,7 @@ For all results presented, the minimum quality threshold was set to 30\%
 \subsection{Pragmatic}
 
 Pragmatic \cite{pragmatic-website,Gorman-2015} is an open source 2D and
-3D anisotropic remesher developed as a C++ library at Imperial College
+3D anisotropic re-mesher developed as a C++ library at Imperial College
 London.
 Initially targeted at geophysical flow simulations, it now
 aims at generating quality meshes for a wide range of numerical
@@ -550,7 +550,7 @@ Pragmatic. However, some initial design
 choices were driven by this approach and still have an influence on the code. 
 
 Whereas adaptation of surfaces based on CAD representation using EGADS
-is in progress, an ad-hoc procedure is used in this paper that projects 
+is in progress, an ad hoc procedure is used in this paper that projects 
 new vertices onto an analytic surface as soon as they are created.
 Note that in the Polar-1 Cube-Cylinder case (see Equation ~\ref{eq:Polar1}), snapping 
 to the surface required to initially prescribe a coarser metric (with $h_0 = 0.1$)
@@ -581,7 +581,7 @@ The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce metric-aligned and metric-orthogonal meshes \cite{loseille-imr-metric-ortho-aniso-gen}.
 
 {\color{blue}\subsection{adaptive process} 
-Approach chosen: interpolate initial metric within the remesher, and call the remesher several times to match metric availability in solver-in-the-loop...\\
+Approach chosen: interpolate initial metric within the re-mesher, and call the re-mesher several times to match metric availability in solver-in-the-loop...\\
 Is that even true for everyone ? }
 
 
@@ -1031,7 +1031,7 @@ in order to reduce the rate of metric gradation due to curvature.
 We still judge the resulting Omega\_h mesh by the original Polar-1
 metric, hence it technically gets a minimum quality result of 14\% here.
 
-EPI-IC continues to show poor performance, while EPIC-ICS
+EPIC-IC continues to show poor performance, while EPIC-ICS
 and EPIC-ICSM show better performance.
 EPIC-ICS and EPIC-ICSM have maximum lengths that are approximately
 twice what they were in the linear cube-cylinder case in
@@ -1280,11 +1280,11 @@ metric on a simple geometry.
 We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
 
 \emph{Surface mesh adaptation.\;}
-Surface mesh adaptation becomes critical when an initial mesh is used as in the local remeshing approach.
+Surface mesh adaptation becomes critical when an initial mesh is used as in the local re-meshing approach.
 This is even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and need to be modified.
 Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
 of a negative volume element.  
-%The necessary level of discretisation
+%The necessary level of discretization
 %on the surface is currently never reached in the current best practice grids.
 This high level of anisotropy has to be then correctly blended
 with the  surface approximation estimate in order not to create numerical artefacts on the geometry.
