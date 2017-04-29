@@ -552,7 +552,7 @@ choices were driven by this approach and still have an influence on the code.
 Whereas adaptation of surfaces based on CAD representation using EGADS
 is in progress, an ad-hoc procedure is used in this paper that projects 
 new vertices onto an analytic surface as soon as they are created.
-Note that in the polar cube-cylinder case (see Equation ~\ref{eq:Polar1}), snapping 
+Note that in the Polar-1 Cube-Cylinder case (see Equation ~\ref{eq:Polar1}), snapping 
 to the surface required to initially prescribe a coarser metric (with $h_0 = 0.1$)
 and then to progressively bring it to the desired metric (by dividing 
 $h_0$ by two iteratively).
@@ -560,8 +560,8 @@ $h_0$ by two iteratively).
 
 \subsection{feflo.a}
 
-{\color{blue}Say it's a zInria code ?}
-Feflo.a is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}.
+Feflo.a is an adaptation code developed at INRIA.
+It is based on a two-step procedure to generate an unit-mesh \cite{loseille-lohner-adapt-boom, loseille-handbook}.
 The first step aims at improving the edges length distribution
 with respect to the input metric field.
 In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
@@ -587,8 +587,6 @@ Is that even true for everyone ? }
 
 \section{Results}
 \label{sec:results}
-
-{\color{blue} coherence Polar-1 and -2  vs polar and modified polar}
 
 For this publication, we use two local criteria of metric satisfaction.
 First, we measure the edge-length criterion as presented
@@ -1016,7 +1014,7 @@ a very low minimum quality.
 \caption{feflo.a}
 \label{fig:fefloa-cube-cylinder-polar-1-mesh}
 \end{subfigure}
-\caption{Meshes for the polar cube-cylinder metric}
+\caption{Meshes for the Polar-1 Cube-Cylinder metric}
 \label{fig:cube-cylinder-polar-1-meshes}
 \end{figure}
 
@@ -1024,13 +1022,13 @@ Omega\_h does not even converge if it cannot find a solution with
 all elements above 30\% quality, so for this metric Omega\_h
 pre-processed the metric using gradation control \cite{Borouchaki-1998-gradation,alauzet-fead-2010-size-gradation-aniso}.
 The resulting mesh is shown as the result in Figure \ref{fig:omega_h-cube-cylinder-polar-1-mesh}.
-This is what inspired the creation of the modified polar metric
+This is what inspired the creation of the Polar-2 metric
 (see Section \ref{sec:cube-cylinder-polar-2}),
 which is an analytic equivalent of what gradation control did
 to the metric.
 In particular, it refines along the tangent direction
 in order to reduce the rate of metric gradation due to curvature.
-We still judge the resulting Omega\_h mesh by the original polar
+We still judge the resulting Omega\_h mesh by the original Polar-1
 metric, hence it technically gets a minimum quality result of 14\% here.
 
 EPI-IC continues to show poor performance, while EPIC-ICS
@@ -1046,7 +1044,7 @@ likely due to not selecting the best option for handling
 this highly graded metric.
 
 \begin{table}
-\caption{Criteria statistics for polar cube-cylinder metric}
+\caption{Criteria statistics for Polar-1 Cube-Cylinder metric}
 \label{tab:polar-1-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
@@ -1059,7 +1057,7 @@ feflo.a    &$  0.01$&      $ 0.18$&      $17.40$&    $35310$\\
 \end{tabular}
 \end{table}
 
-Length histograms for the polar metric in Figure \ref{fig:cube-cylinder-polar-1-lengths}
+Length histograms for the Polar-1 metric in Figure \ref{fig:cube-cylinder-polar-1-lengths}
 show similar patterns for the EPIC codes, with the main difference being the
 reduction of small edges as operators are added.
 Omega\_h and Pragmatic show similar and better controlled distributions, consistent
@@ -1099,7 +1097,7 @@ and renderings.
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-1-length.pdf}
 \caption{feflo.a}
 \end{subfigure}
-\caption{Length histograms for the polar cube-cylinder metric}
+\caption{Length histograms for the Polar-1 Cube-Cylinder metric}
 \label{fig:cube-cylinder-polar-1-lengths}
 \end{figure}
 
@@ -1142,17 +1140,17 @@ but a much steeper and more controlled distribution in the low range.
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-1-quality.pdf}
 \caption{feflo.a}
 \end{subfigure}
-\caption{Quality histograms for the polar cube-cylinder metric}
+\caption{Quality histograms for the Polar-1 Cube-Cylinder metric}
 \label{fig:cube-cylinder-polar-1-qualities}
 \end{figure}
 
-\subsection{Modified Polar Cube-Cylinder Case}
+\subsection{Polar-2 Cube-Cylinder Case}
 \label{sec:cube-cylinder-polar-2}
 
-The modification made to the polar metric specifically targets
+The modification defining the Polar-2 metric specifically targets
 a reduced gradation rate, and Table \ref{tab:polar-2-stats}
 shows that the minimum qualities improved significantly for all
-codes compared to Table \ref{tab:polar-1-stats}, suggesting a
+codes compared to Table \ref{tab:polar-1-stats} for Polar-1, suggesting a
 connection between metric gradation rate and the best attainable
 element quality.
 Note also that EPIC-ICS and EPIC-ICSM have attained maximum lengths
@@ -1197,12 +1195,12 @@ Omega\_h and Pragmatic.
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-2.png}
 \caption{feflo.a}
 \end{subfigure}
-\caption{Meshes for the modified polar cube-cylinder metric}
+\caption{Meshes for the Polar-2 cube-cylinder metric}
 \label{fig:cube-cylinder-polar-2-meshes}
 \end{figure}
 
 \begin{table}
-\caption{Criteria statistics for modified polar cube-cylinder metric}
+\caption{Criteria statistics for Polar-2 Cube-Cylinder metric}
 \label{tab:polar-2-stats}
 \begin{tabular}{lrrrr}
 Code & Min. Quality & Min. Length & Max. Length & \#Elements\\
@@ -1215,14 +1213,14 @@ feflo.a    &$  0.06$&     $  0.18$&      $ 2.65$&    $53117$\\
 \end{tabular}
 \end{table}
 
-The length histograms for the modified polar metric were largely the
-same as for the original polar metric
+The length histograms for the Polar-2 metric were largely the
+same as for the Polar-1 metric
 (Figure \ref{fig:cube-cylinder-polar-1-lengths}),
 and we omit them for brevity.
 
 The quality histograms, on the other hand, show very significant differences
-between the original polar metric in Figure \ref{fig:cube-cylinder-polar-1-qualities}
-and the modified polar metric in Figure \ref{fig:cube-cylinder-polar-2-qualities}.
+between the Polar-1 metric in Figure \ref{fig:cube-cylinder-polar-1-qualities}
+and the Polar-2 metric in Figure \ref{fig:cube-cylinder-polar-2-qualities}.
 All codes (except EPIC-IC) now show a good distribution of quality centered to the
 far right with no noticeable percentages in the low range $[0,0.2]$.
 Omega\_h also shows this nominal distribution, as opposed the strange distribution
@@ -1261,7 +1259,7 @@ on minimum attainable quality but on the qualities of elements all throughout th
 \includegraphics[width=\textwidth]{fefloa-cube-cylinder-polar-2-quality.pdf}
 \caption{feflo.a}
 \end{subfigure}
-\caption{Quality histograms for the modified polar cube-cylinder metric}
+\caption{Quality histograms for the Polar-2 cube-cylinder metric}
 \label{fig:cube-cylinder-polar-2-qualities}
 \end{figure}
 
@@ -1334,7 +1332,7 @@ components are kept unchanged (flow solver, mesh generation algorithm).
 As the first creation of the Unstructured Grid Adaptation Working Group, these benchmark cases have revealed
 a surprising number of useful insights both into the qualities of participating codes and the
 nature of mesh adaptation in general.
-Most notably, the polar metric illustrates how metric gradation can make the metric difficult to satisfy,
+Most notably, the polar metrics illustrates how metric gradation can make the metric difficult to satisfy,
 and how gradation control improves metric conformance across all the participating codes.
 We see that the use of a different edge length criteria by EPIC tends to produce longer edges
 and fewer elements compared to the other codes,
