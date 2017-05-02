@@ -972,7 +972,6 @@ the main issue in satisfying this metric is dealing with the
 resulting high rate of metric gradation.
 As presented in Table \ref{tab:polar-1-stats}, all codes produced
 a very low minimum quality.
-
 \begin{figure}
 \begin{subfigure}{.24\textwidth}
 \centering
@@ -1009,7 +1008,6 @@ a very low minimum quality.
 \caption{Meshes for the Polar-1 Cube-Cylinder metric}
 \label{fig:cube-cylinder-polar-1-meshes}
 \end{figure}
-
 Omega\_h does not even converge if it cannot find a solution with
 all elements above 30\% quality, so for this metric Omega\_h
 pre-processed the metric using gradation control.\cite{Borouchaki-1998-gradation,alauzet-fead-2010-size-gradation-aniso}
@@ -1022,7 +1020,6 @@ In particular, it refines along the tangent direction
 in order to reduce the rate of metric gradation due to curvature.
 We still judge the resulting Omega\_h mesh by the original Polar-1
 metric, hence it technically gets a minimum quality result of 14\% here.
-
 EPIC-IC continues to show poor performance, while EPIC-ICS
 and EPIC-ICSM show better performance.
 EPIC-ICS and EPIC-ICSM have maximum lengths that are approximately
@@ -1057,7 +1054,6 @@ with their maximum edge length results.
 feflo.a still shows a good distribution, illustrating how histograms alone
 don't capture important details, and justifying our inclusion of tables of extrema
 and renderings.
-
 \begin{figure}
 \begin{subfigure}{.16\textwidth}
 \centering
@@ -1092,14 +1088,12 @@ and renderings.
 \caption{Length histograms for the Polar-1 Cube-Cylinder metric}
 \label{fig:cube-cylinder-polar-1-lengths}
 \end{figure}
-
 In the quality histograms (Figure \ref{fig:cube-cylinder-polar-1-qualities}),
 EPIC-ICS, EPIC-ICSM, and Pragmatic have similar
 profiles where frequency increases almost linearly with quality, but noticeable
 amounts in very low range $[0,0.1]$.
 Omega\_h has a different distribution, likely with a lower average quality,
 but a much steeper and more controlled distribution in the low range.
-
 \begin{figure}
 \begin{subfigure}{.16\textwidth}
 \centering
