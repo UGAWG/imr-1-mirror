@@ -359,7 +359,6 @@ Three metric distributions have been defined that represent anisotropic features
 The first is a linear function with anisotropic stretching centered about the $z=0.5$ plane.
 
 The linear metric field is described by:
-
 \begin{equation}
 \label{eq:Linear1}
 M = \begin{bmatrix}
@@ -370,11 +369,10 @@ h_x^2 & 0 & 0 \\
 \end{equation}
 where
 $h_x = 0.1,\; h_y = 0.1,\; h_0 = 0.001 \textrm{\; and\; } h_z = h_0 + 2 (0.1-h_0) |z-0.5|\,.$
-
-This metric field is representative of a shear layer in the absence of curvature and will be referred to as the Linear-1 distribution.  
+This metric field is representative of a shear layer in
+the absence of curvature and will be referred to as the Linear-1.  
 
 The second metric field is described by: 
-
 \begin{equation}
 \label{eq:Polar1}
 M = 
@@ -396,11 +394,9 @@ h_r^{-2} &  0  &    0   \\
 \end{equation}
 where
 $r = \sqrt{x^2+y^2},\; t = \textrm{atan2}(y,x),\; h_z = h_t = 0.1,\; h_0 = 0.001\textrm{\; and\; } h_r = h_0 + 2 (0.1-h_0) \left|r-0.5\right| \,. $
-
-
-In the above equations, $t$ is in the $\theta$ direction and $r$ is the radial direction.
+Where $t$ is in the $\theta$ direction and $r$ is the radial direction.
 This metric field represents a curved shear layer positioned with the curved surface of the Cube-Cylinder geometry.
-This metric distribution will be referred to as the Polar-1 distribution.
+This metric distribution will be referred to as Polar-1.
 
 A slight modification to the Polar-1 distribution is also utilized and is defined as:
 \begin{equation}
@@ -412,7 +408,10 @@ A slight modification to the Polar-1 distribution is also utilized and is define
   \end{aligned}
   \right.
 \end{equation}
-This modified Polar distribution is easier to satisfy with high-quality elements by refining along theta near the layer and will be referred to as the Polar-2 distribution.
+This modified Polar distribution has lower gradation and
+is easier to satisfy with high-quality elements by refining
+in the $\theta$-direction near the layer.
+It is the Polar-2 distribution.
 
 \subsection{Test Cases}
 
