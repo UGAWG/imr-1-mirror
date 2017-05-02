@@ -707,7 +707,7 @@ the same element count (50K), while EPIC-ICSM and feflo.a
 get slightly better element counts (45K).
 This is likely due to their use of smoothing (mesh motion),
 which allows more fine tuning than topology modifications alone.
-feflo.a is the overall best in terms of minimum
+The feflo.a statistics are the best in terms of minimum
 quality,
 minimum length, and element count.
 
@@ -742,12 +742,10 @@ Since the thresholds are typically spaced a factor of two apart,
 we see the two accumulations of edges.
 EPIC-ICSM and feflo.a show a much smoother, bell-curve-like distribution
 with a single maximum.
-
 Recall from Table \ref{tab:cube-linear-stats} that refine/one produces
 twice as many elements as the other codes, and the explanation for this can be
 found in Figure \ref{fig:cube-linear-lengths-refine-one}:
 it produces many short edges that other codes coarsen.
-
 \begin{figure}
 \begin{subfigure}{.16\textwidth}
 \centering
@@ -793,9 +791,8 @@ it produces many short edges that other codes coarsen.
 \caption{Length histograms for the linear cube metric}
 \label{fig:cube-linear-lengths}
 \end{figure}
-
-We omit the quality histograms for this case in the interest
-of brevity, as all codes showed similar distributions.
+The quality histograms for this case are omitted;
+all codes showed similar distributions.
 
 \subsection{Linear Cube-Cylinder Case}
 
