@@ -1253,16 +1253,16 @@ on minimum attainable quality but on the qualities of elements all throughout th
 
 Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries.\cite{alauzet-loseille-decade-aniso-adapt-cfd,michal-unstruct-adapt-epic-dpw6}
 Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
-the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy. We generally decompose this process
-into three main steps:  (1) error estimation, (2) mesh generation, and (3) solution computation.
+the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy.
+We decompose this process into:
+(1) error estimation, (2) mesh generation, and (3) solution computation.
 %One benefit of unstructured mesh adaptation is its ability to adapt to complex geometries as typically  found in aeronautic applications for instance:  landing gear, high lift configurations. Several
 %algorithms to generate anisotropic meshes  with complex geometries exist.  We mention:  (i) edge-based, (iii) cavity-based or
 % (iv) advancing-point-based.  For the flow solver, we consider second order turbulent flow solver.
 %
 However, the full benefit of adaptivity is then achieved only when (1), (2), and (3) are optimally combined.
-This first set of benchmarks focus on metric-conformity with respect to an analytical prescribed
-metric on a simple geometry.
-We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of~(2):
+This first set of benchmarks focus on analytic metric-conformity for a simple geometry.
+We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of mesh generation:
 
 \emph{Surface mesh adaptation.\;}
 Surface mesh adaptation becomes critical when an initial mesh is used as in the local re-meshing approach.
