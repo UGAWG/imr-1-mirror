@@ -554,7 +554,6 @@ to the surface required to initially prescribe a coarser metric (with $h_0 = 0.1
 and then to progressively bring it to the desired metric (by dividing 
 $h_0$ by two iteratively).
 
-
 \subsection{feflo.a}
 
 Feflo.a is an adaptation code developed at INRIA.
@@ -577,10 +576,17 @@ of boundary layer grids.\cite{loseille-lohner-imr21-robust-bl-gen}
 The cavity operator allows to combine advancing-point techniques
 and cavity-based insertion to produce metric-aligned and metric-orthogonal meshes.\cite{loseille-imr-metric-ortho-aniso-gen}
 
-{\color{blue}\subsection{adaptive process} 
-Approach chosen: interpolate initial metric within the re-mesher, and call the re-mesher several times to match metric availability in solver-in-the-loop...\\
-Is that even true for everyone ? }
+\subsection{adaptive process}
 
+To mimic the requirements of a solution adaptation process,
+the analytic metric is evaluated on an input mesh.
+The adaptation mechanics interpolate the metric from the input
+mesh during adaptation.
+The adapted mesh becomes the input mesh and the adaptation process is repeated
+until the adapted grid and the input mesh are equivalent to edge
+length statistics.
+Multiple cycles of metric evaluation are necessary because the
+initial grid does adequately represent the analytic metric.
 
 \section{Results}
 \label{sec:results}
