@@ -613,6 +613,7 @@ L_a = (v_e^T M_a v_e)^{\frac12},
 L_b = (v_e^T M_b v_e)^{\frac12}
 .
 \end{equation}
+An ideal edge has a metric length of one in a unit mesh.
 Second, we also examine element quality, using the
 mean ratio formula for tetrahedra (Equation \ref{eq:quality})
 where $K$ is a tetrahedron, $|K|$ is its volume,
@@ -637,6 +638,7 @@ Q_K =
 M_{\text{max}} = \argmax_{M_v, v\in K}{\det{M_v}}
 .
 \end{equation}
+An ideal element has an ideal mean ratio of one.
 We also consider the global criterion of number of elements,
 as the main purpose of solution-based adaptivity is to
 minimize the number of degrees of freedom while maximizing
