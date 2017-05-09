@@ -1301,13 +1301,16 @@ and highly skewed parameterization.
 \emph{Adaptive boundary layer.\;}
 The generation of a boundary layer mesh is generally designed for isotropic surface grids,
 and is generated only once~\cite{pirzadeh-advancing-layer,loseille-lohner-imr21-robust-bl-gen}.
-Consequently, it is necessary to keep the boundary layer frozen while adapting
+Consequently, the boundary layer is frozen while adapting
 the outer part of the domain~\cite{park-carlson-turbulent-output-adapt-aiaa}.
-However, this strategy is unpracticable when the boundary layer
+However, this frozen boundary layer mesh strategy
+is insufficient when the boundary layer
 interacts when other anisotropic features.
-It is then necessary to design and assess algorithms that are well suited to quickly generate boundary layer meshes
-in the presence of anisotropic surface meshes. Several test cases will be designed:
-(i) analytical boundary layer metric, and then (ii) computational boundary layer metric. 
+The design and assessment of algorithms that are well suited to quickly generate boundary layer meshes
+in the presence of anisotropic surface meshes is necessary.
+Test cases will be designed with:
+(i) an analytical boundary layer metric,
+and (ii) a solution-based boundary layer metric. 
 
 \emph{Parallel environment.\;}
 Finally, the (potential) integration into an HPC environment~\cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinement techniques needs to be studied.
