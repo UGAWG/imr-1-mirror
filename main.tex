@@ -1255,8 +1255,11 @@ on minimum attainable quality but on the qualities of elements all throughout th
 
 \section{Future Directions}
 
-Unstructured mesh adaptation have proven to be a reliable tool to predict complex phenomena  with complex geometries~\cite{alauzet-loseille-decade-aniso-adapt-cfd,michal-unstruct-adapt-epic-dpw6}.
-Applications are found both for steady and unsteady flow regimes. The adaptive process is an iterative procedure where  the mesh and
+Unstructured mesh adaptation has proven to be a reliable tool
+to predict complex phenomena
+with complex geometries~\cite{alauzet-loseille-decade-aniso-adapt-cfd,%
+  michal-unstruct-adapt-epic-dpw6}~for steady and unsteady flow regimes.
+The adaptive process is an iterative procedure where  the mesh and
 the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy.
 We decompose this process into:
 (1) error estimation, (2) mesh generation, and (3) solution computation.
@@ -1276,7 +1279,7 @@ of a negative volume element.
 %The necessary level of discretization
 %on the surface is currently never reached in the current best practice grids.
 This high level of anisotropy has to be then correctly blended
-with the  surface approximation estimate in order not to create numerical artefacts on the geometry.
+with the  surface approximation estimate in order not to create numerical artifacts on the geometry.
 The quality, level of anisotropy, robustness and CPU time need to be assessed  for the  algorithms described in this paper.
 We intend to provide test cases  starting from more complex initial meshes and with a very high level of anisotropy
 near the surface. This will make it possible to assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
