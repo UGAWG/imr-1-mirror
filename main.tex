@@ -1327,7 +1327,7 @@ components are kept unchanged (e.g., flow solver, mesh generation algorithm).
 
 \section{Conclusion}
 
-As the first creation of the Unstructured Grid Adaptation Working Group, these benchmark cases have revealed
+These benchmark cases have revealed
 a surprising number of useful insights both into the qualities of participating codes and the
 nature of mesh adaptation in general.
 The polar metrics illustrates how metric gradation can make the metric difficult to satisfy,
@@ -1338,12 +1338,13 @@ which is important to know when specifying metrics to a certain code.
 The linear cube metric shows us that in certain cases using nodal repositioning as EPIC and feflo.a do can increase element quality
 beyond what is feasible with topology modification alone,
 while the cube-cylinder cases show that preventing low-quality modifications, as Omega\_h does, better
-controls worst element quality in the more difficult cases.
+controls the worst element quality in the more difficult cases.
 
-We hope these and future benchmarks can serve as a common reference point for research in our field.
+The Unstructured Grid Adaptation Working Group hopes
+these and future benchmarks can serve as a common reference point for research in our field.
 We invite others to apply the benchmark to their codes and
-submit of their results to the repository.
-Ideas for improvements or additions to the benchmark cases are also solicited.
+submit their results to the repository.
+Ideas for improvements or additions to the benchmark cases are also welcome.
 
 \bibliography{references}
 \bibliographystyle{model1-num-names}
