@@ -1282,7 +1282,8 @@ This high level of anisotropy has to be then correctly blended
 with the  surface approximation estimate in order not to create numerical artifacts on the geometry.
 The quality, level of anisotropy, robustness and CPU time need to be assessed  for the  algorithms described in this paper.
 We intend to provide test cases  starting from more complex initial meshes and with a very high level of anisotropy
-near the surface. This will make it possible to assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
+near the surface.
+These challenging initial meshes and metrics assess the robustness of the surface mesh adaptation component with respect to the initial starting mesh
 and the level of anisotropy.
 %\begin{itemize}
 %\item edge-based operators with standard optimizations (smoothing, face-edge swaps)
@@ -1295,7 +1296,7 @@ depends on the geometry. Providing high quality surface mesh becomes a mandatory
 We intend to define simple test cases featuring one typical CAD issue at a time:
 missing topology,
 CAD tolerance to edges larger than the required mesh size,
-and highly skewed parametrisation.
+and highly skewed parameterization.
 
 \emph{Adaptive boundary layer.\;}
 The generation of a boundary layer mesh is generally designed for isotropic surface grids,
