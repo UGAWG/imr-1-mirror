@@ -509,9 +509,9 @@ The core algorithm in Omega\_h consists of one loop of alternating
 edge splitting and edge collapsing to satisfy length, followed by another loop
 which uses edge swapping and edge collapsing to satisfy quality.
 Snapping to geometry (using EGADS) is part of the second (quality) loop:
-a step is added which moves all nodes as far as they can towards
+a step is added, which moves all nodes as far as they can towards
 the snapping goal, followed by swapping/collapsing to correct shapes.
-To deal with highly anisotropic target metrics, Omega\_h applies
+To accommodate highly anisotropic target metrics, Omega\_h applies
 its full adaptive algorithm several times, where the metric used
 each time is an interpolated metric between the original implied metric
 and the final desired metric.
