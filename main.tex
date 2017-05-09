@@ -558,13 +558,15 @@ It is based on a two-step procedure to generate an unit-mesh~\cite{loseille-lohn
 The first step aims at improving the edges length distribution
 with respect to the input metric field.
 In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
-The second step is an optimisation procedure where we tend to improve the quality of the mesh by using mesh smoothing
-and swaps of edge and faces of tetrahedra.
+The second step is optimization of the mesh element shape measures with
+node smoothing and tetrahedra edge and face swaps.
 Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements.
-For the surface mesh
-adaptation, a dedicated metric is used to control the deviation to the surface.
-The surface metric is then combined with the input computational metric.
-The new points created on the surface are projected to a (fine) background surface grid and/or by using a request to CAD through the EGADS API.
+For the surface mesh adaptation,
+a dedicated surface metric is used to control the deviation of
+the metric and surface curvature.
+This surface metric is then combined with the input metric.
+New points created on the surface are projected to
+a (fine) background surface grid and optionally CAD via the EGADS API.
 
 More recently, the classical edge-based operators have been replaced by a unique cavity-based operator~\cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}.
 The main of pros is to ease the code maintenance,
