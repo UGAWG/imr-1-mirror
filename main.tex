@@ -568,12 +568,14 @@ This surface metric is then combined with the input metric.
 New points created on the surface are projected to
 a (fine) background surface grid and optionally CAD via the EGADS API.
 
-More recently, the classical edge-based operators have been replaced by a unique cavity-based operator~\cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}.
-The main of pros is to ease the code maintenance,
-to favor the success of a mesh modification, to provide a constant of speed whatever the operator is and to allow the generation
-of boundary layer grids~\cite{loseille-lohner-imr21-robust-bl-gen}.
-The cavity operator allows to combine advancing-point techniques
-and cavity-based insertion to produce metric-aligned and metric-orthogonal meshes~\cite{loseille-imr-metric-ortho-aniso-gen}.
+More recently, classical edge-based operators have been replaced by a unique cavity-based operator~\cite{loseille-menier-imr22-cavity,loseille-menier-alauzet-para-adapt}.
+This cavity-based operator
+simplifies code maintenance,
+increases the success rate of mesh modifications,
+has a constant execution time for many different local operations,
+and robustly inserts boundary layer grids~\cite{loseille-lohner-imr21-robust-bl-gen}.
+When the cavity operator is combined with advancing-point techniques,
+it produces metric-aligned and metric-orthogonal meshes~\cite{loseille-imr-metric-ortho-aniso-gen}.
 
 \subsection{adaptive process}
 
