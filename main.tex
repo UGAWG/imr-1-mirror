@@ -539,7 +539,7 @@ quality-constrained Laplacian smoothing step that fine-tunes the mesh
 quality. The element internal quality function that is optimized is
 the functional defined in Vasilevskii and Lipnikov~\cite{Vasilevskii-1999}.
 Pragmatic was started as a hybrid threads and MPI parallel code. Since
-then, the enthusiasm for hybrid parallelism has waned on the solvers side,
+then, the enthusiasm for hybrid parallelism has waned on the solver side,
 so a more classic purely distributed memory approach was favored in 
 Pragmatic.
 
@@ -554,13 +554,13 @@ $h_0$ is progressively reduced to the desired metric in a series of steps.
 \subsection{feflo.a}
 
 Feflo.a is an adaptation code developed at INRIA.
-It is based on a two-step procedure to generate an unit-mesh~\cite{loseille-lohner-adapt-boom,loseille-handbook}.
+It is based on a two-step procedure to generate a unit-mesh~\cite{loseille-lohner-adapt-boom,loseille-handbook}.
 The first step aims at improving the edges length distribution
 with respect to the input metric field.
 In its original version, only classical edge-based operators (insertion and collapse) are used during this step.
 The second step is optimization of the mesh element shape measures with
 node smoothing and tetrahedra edge and face swaps.
-Feflo.a can handle non-manifold surface and/or volume meshes composed of simplicial elements.
+Feflo.a can handle nonmanifold surface and/or volume meshes composed of simplicial elements.
 For the surface mesh adaptation,
 a dedicated surface metric is used to control the deviation of
 the metric and surface curvature.
@@ -622,7 +622,7 @@ and $|\hat{K}|$ is the volume of a tetrahedron
 with unit edge lengths.
 $M_{\text{max}}$ is a single metric tensor
 being used to measure the whole tetrahedron.
-In this case we choose $M_{\text{max}}$ as the
+In this case, we choose $M_{\text{max}}$ as the
 adjacent vertex metric with largest determinant,
 \begin{equation}
 \label{eq:quality}
