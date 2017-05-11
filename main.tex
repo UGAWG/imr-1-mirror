@@ -1260,7 +1260,8 @@ to predict complex phenomena
 with complex geometries~\cite{alauzet-loseille-decade-aniso-adapt-cfd,%
   michal-unstruct-adapt-epic-dpw6}~for steady and unsteady flow regimes.
 The adaptive process is an iterative procedure where  the mesh and
-the solution are updated to reach {\it an optimal} mesh solution couple of a desired level of accuracy.
+the solution are updated to reach {\it an optimal} mesh solution
+coupled with a desired level of accuracy.
 We decompose this process into:
 (1) error estimation, (2) mesh generation, and (3) solution computation.
 %One benefit of unstructured mesh adaptation is its ability to adapt to complex geometries as typically  found in aeronautic applications for instance:  landing gear, high lift configurations. Several
@@ -1292,7 +1293,7 @@ and the level of anisotropy.
 
 \emph{CAD integration.\;}
 For industrial applications, the use of CAD data is crucial as many quantities of interest
-depends on the geometry. Providing high quality surface mesh becomes a mandatory feature.
+depend on the geometry. Providing high quality surface mesh becomes a mandatory feature.
 We intend to define simple test cases featuring one typical CAD issue at a time:
 missing topology,
 CAD tolerance to edges larger than the required mesh size,
@@ -1305,7 +1306,7 @@ Consequently, the boundary layer is frozen while adapting
 the outer part of the domain~\cite{park-carlson-turbulent-output-adapt-aiaa}.
 However, this frozen boundary layer mesh strategy
 is insufficient when the boundary layer
-interacts when other anisotropic features.
+interacts with other anisotropic features.
 The design and assessment of algorithms that are well suited to quickly generate boundary layer meshes
 in the presence of anisotropic surface meshes is necessary.
 Test cases will be designed with:
@@ -1320,7 +1321,7 @@ we can discuss the quality of the generated parallel grids with respect to the s
 and also assess the performance advantage of the parallel mesh generation (for surface and volume).
 
 In a more general setting, we then intend to extend progressively the number of test cases and results to more complex geometries and metrics
-following the discussion of Park wt al.~\cite{park-unstruct-adapt-status-cfd2030}.
+following the discussion of Park et al.~\cite{park-unstruct-adapt-status-cfd2030}.
 We will apply the same approach as in the preliminary study~\cite{park-loseille-krakos-michal-adapt-decomposition},
 where only one component is modified (for instance, the error estimate) while the remaining
 components are kept unchanged (e.g., flow solver, mesh generation algorithm).
@@ -1330,7 +1331,7 @@ components are kept unchanged (e.g., flow solver, mesh generation algorithm).
 These benchmark cases have revealed
 a surprising number of useful insights both into the qualities of participating codes and the
 nature of mesh adaptation in general.
-The polar metrics illustrates how metric gradation can make the metric difficult to satisfy,
+The polar metrics illustrate how metric gradation can make the metric difficult to satisfy,
 and how gradation control improves metric conformance across all the participating codes.
 We see that the use of a different edge length criteria by EPIC tends to produce longer edges
 and fewer elements compared to the other codes,
