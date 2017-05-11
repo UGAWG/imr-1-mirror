@@ -466,7 +466,7 @@ insertion, collapse, swap, and node movement (EPIC-ICSM).
 
 \subsection{refine}
 
-Adaptive grids results from two versions of the refine tool are presented.
+Adaptive grid results from two versions of the refine tool are presented.
 The refine software package is developed and distributed by NASA.
 Both versions are designed to produce a
 unit mesh~\cite{loseille-alauzet-siamjna-2011-cont-mesh-framework-1}
@@ -480,7 +480,7 @@ Node relocation is performed to improve adjacent element quality.
 A new ideal node location of the node is created
 for each adjacent element.
 A convex combination of these ideal node locations is chosen
-to yield a new node location update the improves
+to yield a new node location update that improves
 the element shape measure in the anisotropic
 metric~\cite{alauzet-topology-moving-mesh}.
 Geometry is accessed through EGADS
@@ -507,9 +507,9 @@ and even GPUs.
 
 The core algorithm in Omega\_h consists of one loop of alternating
 edge splitting and edge collapsing to satisfy length, followed by another loop
-which uses edge swapping and edge collapsing to satisfy quality.
+that uses edge swapping and edge collapsing to satisfy quality.
 Snapping to geometry (using EGADS) is part of the second (quality) loop:
-a step is added, which moves all nodes as far as they can towards
+a step is added, which moves all nodes as far as they can toward
 the snapping goal, followed by swapping/collapsing to correct shapes.
 To accommodate highly anisotropic target metrics, Omega\_h applies
 its full adaptive algorithm several times, where the metric used
