@@ -325,7 +325,7 @@ tools and includes geometry definitions, initial meshes and metric fields for ea
 The \emph{adapt-results} section contains results generated and uploaded by various UGAWG participants using several different meshing tools.
 These benchmark cases and the associated results provide the opportunity to evaluate,
 compare and contrast meshing tools with other contemporary tool sets.
-The Git version control system~\cite{pro-git} and the GitHub website have have become
+The Git version control system~\cite{pro-git} and the GitHub website have become
 vehicles for collaboratively contributing to open source software
 projects.
 In many ways, the central repository for the UGAWG is leveraging
@@ -338,14 +338,14 @@ The benchmarks currently contain two models.
 The geometry for the first benchmark case is represented by a unit cube.
 This case was selected to evaluate a meshing tools ability to match a prescribed metric field in the absence of surface curvature.
 This case provides the opportunity to evaluate the metric conformance without introducing geometry projection or surface curvature complications.
-By removing geometry projection issues, this cube test case can easily be completed by most adaptive re-meshing tools,
+By removing geometry projection issues, this cube test case can easily be completed by most adaptive remeshing tools,
 which provides a common baseline for comparison.
 The second geometry model subtracts from the unit cube a cylinder of radius 0.5 oriented along the $z$-axis positioned at $x=0$, $y=0$.
 This case tests the ability of the meshing tool to build a mesh that conforms to a metric field while simultaneously maintaining the geometry shape.
 The geometry definition is provided in STEP and 
 Electronic Geometry Aircraft Design System
 (EGADS~\cite{haimes-drela-egads})
-formats for re-meshing tools that have an embedded geometry modeling kernel.
+formats for remeshing tools that have an embedded geometry modeling kernel.
 Due to the simple shapes of the Cube or Cube-Cylinder,
 geometry can also be represented analytically.   
 
@@ -524,7 +524,7 @@ For all results presented, the minimum quality threshold was set to 30\%
 \subsection{Pragmatic}
 
 Pragmatic~\cite{pragmatic-website,Gorman-2015} is an open source 2D and
-3D anisotropic re-mesher developed as a C++ library at Imperial College
+3D anisotropic remesher developed as a C++ library at Imperial College
 London.
 Initially targeted at geophysical flow simulations, it now
 aims at generating quality meshes for a wide range of numerical
@@ -1014,7 +1014,7 @@ a very low minimum quality.
 \end{figure}
 Omega\_h does not even converge if it cannot find a solution with
 all elements above 30\% quality, so for this metric Omega\_h
-pre-processed the metric using gradation control~\cite{Borouchaki-1998-gradation,alauzet-fead-2010-size-gradation-aniso}.
+preprocessed the metric using gradation control~\cite{Borouchaki-1998-gradation,alauzet-fead-2010-size-gradation-aniso}.
 The resulting mesh is shown as the result in Figure~\ref{fig:omega_h-cube-cylinder-polar-1-mesh}.
 This is what inspired the creation of the Polar-2 metric
 (see Section \ref{sec:cube-cylinder-polar-2}),
@@ -1272,7 +1272,7 @@ This first set of benchmarks focus on analytic metric-conformity for a simple ge
 We list the main issues that will be addressed by the next sets of test cases  for the verification and validation of mesh generation:
 
 \emph{Surface mesh adaptation.\;}
-Surface mesh adaptation becomes critical when an initial mesh is used as in the local re-meshing approach.
+Surface mesh adaptation becomes critical when an initial mesh is used as in the local remeshing approach.
 This is even more critical when a boundary layer or highly anisotropic areas  are present in the initial mesh and need to be modified.
 Indeed, due to the presence of the volume mesh near the surface mesh, refining an element may lead to the creation
 of a negative volume element.  
@@ -1314,7 +1314,7 @@ and (ii) a solution-based boundary layer metric.
 
 \emph{Parallel environment.\;}
 Finally, the (potential) integration into an HPC environment~\cite{jansson-hoffman-jansson-siamjsc-2012-para-adapt-fe-cfd} of each previous mesh refinement techniques needs to be studied.
-We intend to re-visit all the database test cases in a parallel environment.
+We intend to revisit all the database test cases in a parallel environment.
 In particular,
 we can discuss the quality of the generated parallel grids with respect to the sequential one,
 and also assess the performance advantage of the parallel mesh generation (for surface and volume).
